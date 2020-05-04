@@ -1,0 +1,180 @@
+page {  
+  background-color: #f2f2f2;  
+  height: 100%;
+}  
+.jia_img{  
+  height: 80rpx;  
+  width: 90rpx;  
+}  
+.time {  
+  text-align: center;  
+  padding: 5rpx 20rpx 5rpx 20rpx;  
+  width: 200rpx;  
+  font-size: 26rpx;  
+  background-color: #E8E8E8;  
+}  
+.tab{
+  bottom: 120rpx;
+}
+.tab_1{
+  position: fixed;
+  bottom: 50rpx;
+  width: 200rpx;
+  font-size: 26rpx;
+  left: 50%;
+  margin-left: -45rpx;
+  height: 100rpx;
+}
+.tab_2{
+  right: 30rpx;
+  position: fixed;
+}
+/* 聊天 */  
+  
+.my_right {  
+  float: right;  
+  margin-top: 30rpx;
+  position: relative;  
+  right: 40rpx;  
+}  
+.my_audio{
+  height: 120rpx;
+  width: 150rpx;
+  position: absolute;
+  right: 150rpx;
+  background: white;
+  top: 20rpx;
+}
+.my_img_bg{
+  height: 150rpx;
+  width: 400rpx;
+  position: relative;
+  right: 0;
+  background: white;
+  top: 20rpx;
+}
+.you_left {  
+  margin-top: 30rpx;
+  float: left;  
+  position: relative;  
+  left: 5rpx;  
+}  
+  
+.new_img {  
+  width: 100rpx;  
+  height: 100rpx;  
+  border-radius: 50%;  
+}  
+  
+.new_txt {  
+  width: 420rpx;  
+}  
+.new_txt_my{
+  border-radius: 7px;  
+  background-color: #fff;  
+  margin-top: 10rpx;
+  padding: 0rpx 30rpx 0rpx 30rpx;  
+  float: right;
+}
+.new_txt_ai{
+  border-radius: 7px;  
+  background-color: #fff;  
+  margin-top: 10rpx;
+  padding: 0rpx 30rpx 0rpx 30rpx;  
+  float: left;
+}
+.sanjiao {  
+  top: 25rpx;  
+  position: relative;  
+  width: 0px;  
+  height: 0px;  
+  border-width: 15rpx;  
+  border-style: solid;  
+}  
+  
+.my {  
+  border-color: transparent transparent transparent #fff;  
+}  
+  
+.you {  
+  border-color: transparent #fff transparent transparent;  
+}  
+  
+.sendmessage {  
+  width: 100%;  
+  z-index: 2;
+  display: flex;  
+  position: fixed;
+  bottom: 0px;
+  background-color: #F4F4F6; 
+  flex-direction: row;  
+  height: 85rpx;
+}  
+.voice_icon{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+}
+.voice_ing{
+  width: 90%;
+  height: 75rpx;
+  line-height: 85rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  border: 1px solid #d0d0d0;
+}
+.sendmessage_2 {  
+  z-index: 1;
+  position: relative;
+  width: 100%;  
+  display: flex;  
+  background-color: #F4F4F6; 
+  flex-direction: row;  
+  height: 85rpx;
+}    
+.sendmessage input {  
+  width: 75%;  
+  height: 60rpx;   
+  background-color: white; 
+  line-height: 60rpx;  
+  font-size: 28rpx;  
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  border: 1px solid #d0d0d0;  
+  padding-left: 20rpx;  
+}  
+.sendmessage button {  
+  border: 1px solid white;  
+  width: 18%;  
+  height: 65rpx;  
+  background: #00CC00;
+  color: white;
+  line-height: 65rpx;  
+  margin-top: 10rpx;
+  font-size: 28rpx;  
+}  
+  
+.hei{  
+  height: 20rpx;  
+}  
+.history {  
+  height: 80%;  
+  padding: 20rpx  20rpx  20rpx  20rpx;
+  font-size: 14px;  
+  line-height: 50rpx;  
+  word-break: break-all;  
+}  
+ 
+.icno_kf{
+  position: fixed;
+  bottom: 160rpx;
+  margin: 0 auto;
+  text-align: center;
+  left: 50%;
+  margin-left: -40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%
+}

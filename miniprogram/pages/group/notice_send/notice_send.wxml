@@ -1,0 +1,39 @@
+<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+</cu-custom>
+<form>
+	<view class="cu-form-group">
+		<view class="title">通知标题</view>
+		<input placeholder="如：新作业通知" bindinput="titleInput"></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">课程序号</view>
+		<picker bindchange="classChange" value="{{classIndex}}" range="{{classes}}" range-key="{{'_id'}}">
+			<view class="picker">
+				{{classIndex?classes[classIndex]._id:'选择群组'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">时间选择</view>
+		<picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="TimeChange">
+			<view class="picker">
+				{{time}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">日期选择</view>
+		<picker mode="date" value="{{date}}" start="2015-09-01" end="2020-09-01" bindchange="DateChange">
+			<view class="picker">
+				{{date}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group margin-top">
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="contentInput" placeholder="通知正文内容"></textarea>
+	</view>
+</form>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-green lg" bindtap="submit">发布</button>
+</view>

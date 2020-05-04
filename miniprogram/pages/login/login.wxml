@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<cu-custom bgImage="/images/bg.jpeg">
+    <view slot="content">
+      <text class='color'>登录翱翔门户</text>
+    </view>
+  </cu-custom>
+<view class="container" >
+ <view class="one">
+  <image class='ima' src='/images/avator1.png' mode='aspectFill'></image>
+ </view>
+ <view class="two">
+ <input bindinput='usernameInput' class='user_txt' maxlength="10" placeholder="请输入学号" style='height:80rpx' type="number"></input>
+ </view>
+ <view class="three">
+ <input bindinput='passwordInput' class='color' style='height:80rpx' placeholder="请输入密码" type="text" password="true"></input>
+ </view>
+ <view class="four"><button  type='default' plain="true" bindtap="login">登录</button></view>
+</view>

@@ -1,0 +1,51 @@
+<cu-custom bgImage="{{noticedetail_jpg}}" isBack="{{true}}">
+  <view slot="backText">返回</view>
+</cu-custom>
+
+<block wx:if="{{userType ===  1}}">
+  <block wx:for="{{received}}" wx:for-item="member" wx:for-index='key'>
+    <view class="cu-list menu-avatar no-padding">
+      <view class="cu-item">
+        <view wx:if="{{member===0}}">
+          <view class="cu-avatar round lg" style="position:fixed;left:10rpx;top:20rpx">×</view>
+        </view>
+        <view wx:else>
+          <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
+        </view>
+        <view class="content">
+          <view class="text-grey">{{key}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</block>
+
+
+<view wx:if="{{userType ===  0}}">
+
+  <view class="cu-list menu-avatar no-padding">
+    <view class="cu-item">
+      <view wx:if="{{receivedOne === 0}}">
+        <view class="cu-avatar round lg" style="position:fixed;left:10rpx;top:20rpx">×</view>
+      </view>
+      <view wx:else>
+        <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
+      </view>
+      <view wx:if="{{receivedOne === 0}}" class="cu-btn" bindtap="confirm">确认收到</view>
+      <view wx:if="{{receivedOne === 1}}" class="cu-btn">已收到</view>
+      <view class="content">
+        <view class="text-grey">{{title}}</view>
+        <view class="text-gray text-sm">
+          截止时间：{{date}} {{time}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容 -->
+  <text class="text">
+  {{content}}
+   </text>
+  
+</view>

@@ -1,0 +1,67 @@
+/* pages/login/login.wxss */
+.container{
+display: flex;
+flex-direction: column;
+height: 100vh;
+justify-content: space-around;
+justify-items: center;
+background-repeat:no-repeat;
+background-size:100%;
+background-position: center;
+padding: 0 0 300rpx 0;
+background-color: f3f3f3
+}
+
+.one{
+  height:120rpx;
+  width: 100%;
+  display: flex;
+justify-content: center
+}
+
+.ima{
+  height: 120rpx;
+}
+.two{
+justify-content: center;
+align-items: center;
+width: 80%;
+
+}
+
+.three{
+justify-content: center;
+align-items: center;
+width: 80%;
+
+}
+
+.four{
+ opacity: 0.8;
+ width: 60%;
+}
+input{
+  border-radius: 10rpx;
+  font-size: 36rpx;
+  line-height: 6rpx;
+  width:100%;
+  background-color:#ffffff;
+  opacity: 0.7
+}
+.xh{
+  width: 70%;
+}
+
+.mm{
+  width: 70%;
+}
+page{
+ background-color:  #f3f3f3;
+}
+
+.color{
+  color: black
+}
+.user_txt{
+  color: black
+}

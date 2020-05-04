@@ -1,0 +1,52 @@
+<cu-custom bgImage='{{me_jpt}}' isBack="{{true}}">
+  <view slot="backText">返回</view>
+</cu-custom>
+<!--index.wxml-->
+<view class="container">
+  <!-- 上半部分 -->
+  <view class="top">
+    <!-- 上左 -->
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      </block>
+    </view>
+    <!-- 上右 -->
+    <view class="aoxiang">
+      <block wx:if="{{userType === 0}}">
+        <text class="userinfo-nickname">姓名：{{name}}</text>
+        <text class="userinfo-nickname">学号：{{number}}</text>
+        <text class="userinfo-nickname">学院：{{academy}}</text>
+      </block>
+      <block wx:if="{{userType == 1}}">
+        <text class="userinfo-nickname">姓名：{{name}}</text>
+        <text class="userinfo-nickname">管理员</text>
+      </block>
+    </view>
+  </view>
+  <!-- 中间 -->
+  <view class="middle">
+    <view>
+      <button class="botton_style" bindtap="thank">致谢与说明</button>
+    </view>
+    <view>
+      <button class="botton_style" bindtap="advice" open-type="feedback">意见反馈</button>
+    </view>
+    <view>
+      <button class="botton_style" bindtap="like">赞赏支持</button>
+    </view>
+    <view>
+      <button class="botton_style" bindtap="onShareAppMessage" open-type="share">分享给朋友</button>
+    </view>
+    <view>
+      <button class="botton_quit_style" bindtap="quit">退出账号</button>
+    </view>
+  </view>
+  <!-- 下半部分 -->
+  <view class="bottom">
+    <view class="usermotto">
+      <text class="user-motto">{{motto}}</text>
+    </view>
+  </view>
+</view>

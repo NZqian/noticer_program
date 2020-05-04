@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/group/notice/notice",
+    "pages/group/notice_send/notice_send",
+    "pages/group/notice_detail/notice_detail",
+    "pages/group/group",
+    "pages/me/me"    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ColorUI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#f10b2e",
+    "list":[
+      {
+        "pagePath": "pages/group/group",
+        "text": "群组",
+        "iconPath": "/images/icon_left.jpg",
+        "selectedIconPath": "images/icon_left.jpg"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页",
+        "iconPath": "/images/icon.jpg",
+        "selectedIconPath": "images/icon.jpg"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "关于",
+        "iconPath": "/images/icon_right.jpg",
+        "selectedIconPath": "images/icon_right.jpg"
+      }
+    ]
+  }
+}
