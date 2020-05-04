@@ -8,9 +8,9 @@
 	</view>
 	<view class="cu-form-group margin-top">
 		<view class="title">课程序号</view>
-		<picker bindchange="classChange" value="{{classIndex}}" range="{{classes}}" range-key="{{'_id'}}">
+		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
 			<view class="picker">
-				{{classIndex?classes[classIndex]._id:'选择群组'}}
+				{{groupIndex?groups[groupIndex]._id:'选择群组'}}
 			</view>
 		</picker>
 	</view>

@@ -19,19 +19,19 @@ module.exports = {
   formatTime: formatTime
 }
 
-function getClasses() {
+function getGroups() {
   let type = app.globalData.userdata['type']
   const db = wx.cloud.database()
   if (type === "student") {
-    db.collection('Classes').where({
+    db.collection('Groups').where({
       students: app.globalData.userdata['name'],
       type: "class"
     }).get({
       success: function(res) {
-        app.globalData.classes = res.data
+        app.globalData.groups = res.data
       }
     })
-    db.collection('Classes').where({
+    db.collection('Groups').where({
       students: app.globalData.userdata['name'],
       type: "academy"
     }).get({
@@ -45,12 +45,12 @@ function getClasses() {
       name: 'getList20',
       complete: res => {
         console.log(res)
-        app.globalData.classes = res.result.data
+        app.globalData.groups = res.result.data
       }
     })
   }
 }
 
 module.exports = {
-  getClasses: getClasses
+  getGroups: getGroups
 }

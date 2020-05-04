@@ -25,8 +25,6 @@ Component({
   
   methods: {
     toChild(e) {
-      console.log("toChild")
-      console.log('/pages'+e.currentTarget.dataset.url)
       wx.navigateTo({
         url: '/pages' + e.currentTarget.dataset.url
       })
@@ -34,7 +32,7 @@ Component({
     onLoad() {
       app.globalData.userdata = wx.getStorageSync("userdata")
       var util = require("../../utils/util.js")
-      util.getClasses()
+      util.getGroups()
     }
   }
 });

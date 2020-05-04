@@ -8,7 +8,7 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   try{
-    return await db.collection('Classes').get()
+    return await db.collection('Groups').get()
   } catch(e){
     console.error(e)
   }

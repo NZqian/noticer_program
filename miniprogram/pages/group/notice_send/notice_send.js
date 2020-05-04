@@ -13,7 +13,7 @@ Page({
     index: null,
     /*课程序号list
      */
-    classes: [],
+    groups: [],
     time: '12:00',
     date: '2020-4-15',
     textareaAInput(e) {
@@ -23,14 +23,14 @@ Page({
     },
     title: "",
     content: "",
-    classID: "",
+    groupID: "",
   },
-  classChange: function(e){
-    var classIndex = e.detail.value
+  groupChange: function(e){
+    var groupIndex = e.detail.value
     //console.log(classIndex)
     this.setData({
-      classIndex: classIndex,
-      classID: this.data.classes[classIndex]['_id']
+      groupIndex: groupIndex,
+      groupID: this.data.groups[groupIndex]['_id']
     })
   },
   TimeChange: function(e) {
@@ -60,17 +60,17 @@ Page({
     })
   },
   //将通知内容写入数据库
-  addNoticeintoDB: function(title, content, time, date, classID) {
+  addNoticeintoDB: function(title, content, time, date, groupID) {
     var receiveStatus = {}
     var nameList = []
-    db.collection('Classes').doc(classID).get().then(res => {
+    db.collection('Groups').doc(groupID).get().then(res => {
       //console.log(res.data.students)
       nameList = res.data.students
       //console.log(nameList)
       for (var i = 0; i < nameList.length; i++) {
         receiveStatus[nameList[i]] = 0
       }
-      db.collection('Classes').doc(classID).update({
+      db.collection('Groups').doc(groupID).update({
         data: {
           notices: _.push({
             title: title,
@@ -86,11 +86,9 @@ Page({
             title: '发布成功',
             duration: 2000,
             success: function () {
-              var util = require("../../../../utils/util.js")
-              util.getClasses()
-              setTimeout(function () {
-                
-                console.log("add success")
+              var util = require("../../../utils/util.js")
+              util.getGroups()
+              setTimeout(function () {           
                 wx.navigateBack()
               }, 2000);
             }
@@ -101,15 +99,15 @@ Page({
   },
   submit: function() {
     console.log(this.data.title)
-    console.log(this.data.classID)
+    console.log(this.data.groupID)
     console.log(this.data.time)
     console.log(this.data.date)
     console.log(this.data.content)
-    this.addNoticeintoDB(this.data.title, this.data.content, this.data.time, this.data.date, this.data.classID)
+    this.addNoticeintoDB(this.data.title, this.data.content, this.data.time, this.data.date, this.data.groupID)
   },
   onLoad() {
     this.setData({
-      classes: app.globalData.classes
+      groups: app.globalData.groups
     })
   },
 })

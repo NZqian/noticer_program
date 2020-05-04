@@ -7,14 +7,14 @@
   </view>
   <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
     <button class="cu-btn bg-blue shadow">添加群组</button>
-    <button class="cu-btn bg-blue shadow" bindtap="gotoform">新建通知</button>
+    <button class="cu-btn bg-blue shadow" bindtap="gotoNoticeSend">新建通知</button>
   </view>
 </view>
 
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
   <!--学院群-->
   <block wx:if="{{userType === 0}}">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotomodal" data-notices="{{academyGroup.notices}}" data-class="{{academyGroup}}">
+    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{academyGroup.notices}}" data-class="{{academyGroup}}">
       <view class="cu-item">
         <view class="cu-avatar round lg">{{academyGroup.name[0]}}</view>
         <view class="content">
@@ -25,31 +25,18 @@
     </view>
   </block>
 
-  <block wx:for="{{classes}}" wx:for-item="class">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotomodal" data-notices="{{class.notices}}" data-class="{{class}}">
+  <block wx:for="{{groups}}" wx:for-item="group">
+    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-class="{{group}}">
       <view class="cu-item">
-        <view class="cu-avatar round lg">{{class.name[0]}}</view>
+        <view class="cu-avatar round lg">{{group.name[0]}}</view>
         <view class="content">
-          <view class="text-grey">{{class.name}}
+          <view class="text-grey">{{group.name}}
           </view>
           <view class="text-gray text-sm">
-            {{class._id}}
+            {{group._id}}
           </view>
         </view>
       </view>
     </view>
   </block>
 </scroll-view>
-<!-->
-<view class="indexBar" style="height:calc(100vh - {{CustomBar}}px - 50px)">
-  <view class="indexBar-box" bindtouchstart="tStart" bindtouchend="tEnd" catchtouchmove="tMove">
-    <view class="indexBar-item" wx:for="{{list}}" wx:key id="{{index}}" bindtouchstart="getCur" bindtouchend="setCur">{{list[index]}}</view>
-  </view>
-</view>
-<-->
-  <!--选择显示-->
-  <!-->
-  <view hidden="{{hidden}}" class="indexToast">
-    {{listCur}}
-  </view>
-  <-->
