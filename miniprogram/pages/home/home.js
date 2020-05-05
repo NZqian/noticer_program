@@ -30,9 +30,9 @@ Component({
       })
     },
     onLoad() {
-      app.globalData.userdata = wx.getStorageSync("userdata")
       var util = require("../../utils/util.js")
       util.getGroups()
+      util.getAllGroups()
     }
   }
 });

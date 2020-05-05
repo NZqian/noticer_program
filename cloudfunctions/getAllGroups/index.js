@@ -5,11 +5,11 @@ cloud.init()
 const db = cloud.database()
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async(event, context) => {
   const wxContext = cloud.getWXContext()
-  try{
+  try {
     return await db.collection('Groups').get()
-  } catch(e){
+  } catch (e) {
     console.error(e)
   }
 }

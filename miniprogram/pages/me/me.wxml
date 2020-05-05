@@ -1,4 +1,4 @@
-<cu-custom bgImage='{{me_jpt}}' isBack="{{true}}">
+<cu-custom bgImage='{{me_jpt}}' isBack="{{false}}">
   <view slot="backText">返回</view>
 </cu-custom>
 <!--index.wxml-->

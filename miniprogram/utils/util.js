@@ -20,37 +20,43 @@ module.exports = {
 }
 
 function getGroups() {
-  let type = app.globalData.userdata['type']
-  const db = wx.cloud.database()
-  if (type === "student") {
-    db.collection('Groups').where({
-      students: app.globalData.userdata['name'],
-      type: "class"
-    }).get({
-      success: function(res) {
-        app.globalData.groups = res.data
-      }
-    })
-    db.collection('Groups').where({
-      students: app.globalData.userdata['name'],
-      type: "academy"
-    }).get({
-      success: function (res) {
-        app.globalData.academyGroup = res.data[0]
-        console.log(app.globalData.academyGroup)
-      }
-    })
-  } else {
-    wx.cloud.callFunction({
-      name: 'getList20',
-      complete: res => {
-        console.log(res)
-        app.globalData.groups = res.result.data
-      }
-    })
-  }
+  wx.cloud.callFunction({
+    name: 'getGroups',
+    data: {
+      type: app.globalData.userdata['type'],
+      name: app.globalData.userdata['name']
+    },
+    complete: res=>{
+      console.log(res)
+      app.globalData.groups = res.result.data
+    }
+  })
+}
+
+function getAllGroups() {
+  wx.cloud.callFunction({
+    name: 'getAllGroups',
+    complete: res => {
+      console.log(res)
+      app.globalData.allGroups = res.result.data
+    }
+  })
+}
+
+function addAdminIntoDB(_id, name){
+  console.log(_id)
+  console.log(name)
+  wx.cloud.callFunction({
+    name: 'addAdminIntoDB',
+    data: {
+      _id: _id,
+      name: name
+    }
+  })
 }
 
 module.exports = {
-  getGroups: getGroups
+  getGroups: getGroups,
+  getAllGroups: getAllGroups,
+  addAdminIntoDB: addAdminIntoDB
 }

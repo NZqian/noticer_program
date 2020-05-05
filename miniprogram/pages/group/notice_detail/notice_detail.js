@@ -21,21 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let received = wx.getStorageSync("received")
-    let notice = wx.getStorageSync("notice")
-    let name = app.globalData.userdata['name']
-
-    this.setData({
-      received: received,
-      name: name,
-      date: notice['date'],
-      time: notice['time'],
-      title: notice['title'],
-      content: notice['content'],
-      receivedOne: received[name]
-    })
-  },
-  onShow() {
     if (app.globalData.userdata['type'] === "admin") {
       this.setData({
         userType: 1,
@@ -45,10 +30,13 @@ Page({
         userType: 0,
       })
     }
-    let received = wx.getStorageSync("received")
-    let notice = wx.getStorageSync("notice")
+    console.log(options)
+    let received = JSON.parse(options.received)
+    let notice = JSON.parse(options.notice)
+    let thisGroup = JSON.parse(options.thisGroup)
+    let notices = JSON.parse(options.notices)
     let name = app.globalData.userdata['name']
-
+    console.log(received[name])
     this.setData({
       received: received,
       name: name,
@@ -56,30 +44,38 @@ Page({
       time: notice['time'],
       title: notice['title'],
       content: notice['content'],
-      receivedOne: received[name]
+      thisReceived: received[name],
+      thisGroup: thisGroup,
+      notices: notices
     })
+    console.log(this.data.thisReceived)
   },
+  onShow: function(options) {
+
+  },
+
   confirm: function() {
     console.log("confirmed")
     this.setData({
-      receivedOne: 1
+      thisReceived: 1
     })
     const db = wx.cloud.database()
     const _ = db.command
-    let thisClass = wx.getStorageSync("class")
-    let notice = wx.getStorageSync("notice")
-    let notices = wx.getStorageSync("notices")
+
+    let notices = this.data.notices
+    let thisGroup = this.data.thisGroup
+
     let name = app.globalData.userdata['name']
 
-    for(var i = 0; i < notices.length; i++){
-      if(notices[i]['title'] == this.data.title){
+    for (var i = 0; i < notices.length; i++) {
+      if (notices[i]['title'] == this.data.title) {
         notices[i]['received'][name] = 1
         break
       }
     }
     console.log(notices)
-    db.collection('Classes').doc(thisClass['_id']).update({
-      data:{
+    db.collection('Groups').doc(thisGroup['_id']).update({
+      data: {
         notices: notices
       }
     })

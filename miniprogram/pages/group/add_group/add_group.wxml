@@ -1,0 +1,17 @@
+<!--miniprogram/pages/group/add_group/add_group.wxml-->
+<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+</cu-custom>
+<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">课程序号</view>
+		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
+			<view class="picker">
+				{{groupIndex?groups[groupIndex]._id:'选择群组'}}
+			</view>
+		</picker>
+	</view>
+</form>
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-green lg" bindtap="confirm">确定</button>
+</view>

@@ -1,32 +1,19 @@
-<cu-custom bgImage="{{notice_jpg}}" isBack="{{true}}">
-  <view slot="backText">返回</view>
+<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{false}}">
+	<view slot="backText">返回</view>
 </cu-custom>
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
   <view class="action">
     <text class="cuIcon-title text-blue"></text>课程群及通知群
   </view>
   <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
-    <button class="cu-btn bg-blue shadow">添加群组</button>
+    <button class="cu-btn bg-blue shadow" bindtap="gotoAddGroup">添加群组</button>
     <button class="cu-btn bg-blue shadow" bindtap="gotoNoticeSend">新建通知</button>
   </view>
 </view>
 
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
-  <!--学院群-->
-  <block wx:if="{{userType === 0}}">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{academyGroup.notices}}" data-class="{{academyGroup}}">
-      <view class="cu-item">
-        <view class="cu-avatar round lg">{{academyGroup.name[0]}}</view>
-        <view class="content">
-          <view class="text-grey">{{academyGroup.name}}
-          </view>
-        </view>
-      </view>
-    </view>
-  </block>
-
   <block wx:for="{{groups}}" wx:for-item="group">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-class="{{group}}">
+    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-group="{{group}}">
       <view class="cu-item">
         <view class="cu-avatar round lg">{{group.name[0]}}</view>
         <view class="content">

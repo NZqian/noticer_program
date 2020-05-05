@@ -26,14 +26,14 @@
 
   <view class="cu-list menu-avatar no-padding">
     <view class="cu-item">
-      <view wx:if="{{receivedOne === 0}}">
+      <view wx:if="{{thisReceived === 0}}">
         <view class="cu-avatar round lg" style="position:fixed;left:10rpx;top:20rpx">×</view>
       </view>
       <view wx:else>
         <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
       </view>
-      <view wx:if="{{receivedOne === 0}}" class="cu-btn" bindtap="confirm">确认收到</view>
-      <view wx:if="{{receivedOne === 1}}" class="cu-btn">已收到</view>
+      <view wx:if="{{thisReceived === 0}}" class="cu-btn" bindtap="confirm">确认收到</view>
+      <view wx:if="{{thisReceived === 1}}" class="cu-btn">已收到</view>
       <view class="content">
         <view class="text-grey">{{title}}</view>
         <view class="text-gray text-sm">

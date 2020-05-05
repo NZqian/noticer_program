@@ -1,0 +1,4 @@
+/* miniprogram/pages/group/add_group/add_group.wxss */
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}

@@ -6,7 +6,6 @@ Page({
     password: ''
   },
   addStudentIntoClass: function(group, name) {
-    //console.log(group)
     const db = wx.cloud.database()
     db.collection('Groups').where({
         _id: group['groupID']
@@ -14,7 +13,7 @@ Page({
       .then(res => {
         console.log(res)
         if (res.data.length) {
-          console.log("group exist, adding student into class")
+          console.log("group exist, adding user into class")
           const _ = db.command
           db.collection('Groups').doc(group['groupID']).update({
             data: {
@@ -29,6 +28,7 @@ Page({
               name: group['groupName'],
               students: [name],
               notices: [],
+              admins: [],
               type: group['type']
             }
           })
@@ -44,8 +44,6 @@ Page({
       username: this.data.username
     }).get({
       success: res => {
-        console.log(res)
-        console.log(res.data.length)
         if (res.data.length > 0) {
           app.globalData.userdata = res.data[0]
           wx.setStorageSync('isUserInfoStored', true)
@@ -76,7 +74,7 @@ Page({
 
               if (res.data.type === "student") {
                 let academy = {
-                  GroupID: res.data.academy,
+                  groupID: "Academy"+res.data.academy,
                   groupName: res.data.academy,
                   type: "academy"
                 }
