@@ -29,10 +29,15 @@ Component({
         url: '/pages' + e.currentTarget.dataset.url
       })
     },
-    onLoad() {
+    onLoad: function () {
       var util = require("../../utils/util.js")
       util.getGroups()
       util.getAllGroups()
+      wx.showToast({
+        title: '载入中',
+        icon: 'loading',
+        duration: 2000
+      })
     }
   }
 });

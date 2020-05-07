@@ -41,17 +41,12 @@ Page({
         userType: 0,
       })
     }
-    this.setData({
-      groups: app.globalData.groups,
-      academyGroup: app.globalData.academyGroup
-    })
   },
   onShow() {
     var util = require("../../utils/util.js")
     util.getGroups()
     this.setData({
-      groups: app.globalData.groups,
-      academyGroup: app.globalData.academyGroup
+      groups: app.globalData.groups
     })
   },
 });

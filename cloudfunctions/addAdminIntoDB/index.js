@@ -11,18 +11,24 @@ exports.main = async (event, context) => {
   var Group
   let _id = event['_id']
   let name = event['name']
+  console.log(_id)
+  console.log(name)
   try{
+    var val 
     await db.collection('Groups').doc(_id).get().then(res=>{
       console.log(res.data)
+      val = res
       if(res.data.admins.indexOf(name) == -1){//不在admins中
         db.collection('Groups').doc(_id).update({
           data:{
             admins: _.push(name) 
+          },success: function (res) {
+            console.log(res.data)
           }
         })
       }
     })
-    return name
+    return val
   } catch (e) {
     console.error(e)
   }

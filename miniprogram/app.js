@@ -52,11 +52,5 @@ App({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
-  },
-  globalData: {
-    userInfo: null,
-    xh:null,
-    mm: null,
-    userdata:null
   }
 })
