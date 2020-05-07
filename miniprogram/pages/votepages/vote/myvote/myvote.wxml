@@ -1,0 +1,17 @@
+
+<!--pages/myvote/myvote.wxml-->
+<view wx:for="{{votes}}" wx:key="unique" class="flex-wrp" style="flex-direction: row;">
+  <view class="flex-wrp" style="flex-direction: row;">
+    <view style="height: 15px;flex-direction:row;"></view>
+  </view>
+  <view class="flex-wrp" style="flex-direction: row;">
+    {{index+1}}:{{item.title}}
+  </view>
+  <view class="flex-wrp" style="flex-direction: row;">
+    <view style="height: 15px;flex-direction:row;"></view>
+  </view>
+  <view class="flex-wrp" style="flex-direction: row;">
+    <button size="mini" data-id="{{item.id}}" bindtap="voteItem">投票</button>
+    <button size="mini" data-id="{{item.id}}" bindtap="voteResult">结果</button>
+  </view>
+</view>

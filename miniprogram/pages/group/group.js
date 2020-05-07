@@ -20,7 +20,13 @@ Page({
     })
   },
 
-  gotoNoticeSend: function(options) {
+  gotovote:function(options){
+    wx.navigateTo({
+      url: '/pages/votepages/vote/index/index',
+    })
+  },
+
+  gotoNoticeSend: function() {
     wx.navigateTo({
       url: '/pages/group/notice_send/notice_send',
     })
@@ -41,12 +47,17 @@ Page({
         userType: 0,
       })
     }
+    this.setData({
+      groups: app.globalData.groups,
+      academyGroup: app.globalData.academyGroup
+    })
   },
   onShow() {
     var util = require("../../utils/util.js")
     util.getGroups()
     this.setData({
-      groups: app.globalData.groups
+      groups: app.globalData.groups,
+      academyGroup: app.globalData.academyGroup
     })
   },
 });
