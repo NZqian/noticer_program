@@ -36,7 +36,6 @@ Page({
       })
   },
 
-
   login: function() {
     const db = wx.cloud.database()
     let that = this
@@ -53,7 +52,7 @@ Page({
           let storeddata = wx.getStorageSync('userdata')
           console.log(storeddata)
           wx.switchTab({
-            url: '/pages/home/home',
+            url: '../home/home'
           })
         } else {
           // 发出请求获取用户翱翔信息
@@ -89,8 +88,12 @@ Page({
               console.log(res.data);
               wx.setStorageSync('isUserInfoStored', true)
               wx.setStorageSync('userdata', res.data)
+              /*
+              wx.redirectTo({
+                url: '../home/home',
+              })*/
               wx.switchTab({
-                url: '/pages/home/home',
+                url: '../home/home'
               })
             },
             fail: function(res) {
@@ -125,7 +128,7 @@ Page({
     if (wx.getStorageSync('isUserInfoStored')) {
       app.globalData.userdata = wx.getStorageSync('userdata')
       wx.switchTab({
-        url: '/pages/home/home',
+        url: '../home/home'
       })
     }
   },

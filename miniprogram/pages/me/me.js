@@ -95,5 +95,5 @@ Page({
       path: '/pages/login/login',
       imageUrl: '/pages/images/title.png'
     }
-  }
+  },
 })
