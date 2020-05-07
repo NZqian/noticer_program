@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view>
+  <view class="btn-avatar">
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="attendvote"> {{functionbtn1}} </button>
+  </view>
+  <view class="btn-avatar">
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="myvote"> {{functionbtn3}} </button>
+  </view>
+  <view class="btn-avatar">
+  <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="createvote"> {{functionbtn2}} </button>
+  </view>
+ 
+</view>

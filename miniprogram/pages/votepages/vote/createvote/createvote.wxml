@@ -1,0 +1,228 @@
+
+<!--createvote.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <input name="unionid" value="{{userInfo.unionId}}" hidden />
+  <input name="openid" value="{{userInfo.openid}}" hidden />
+  <view class="section section_gap">
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view style="height: 15px;flex-direction:row;"></view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>类型：</view>
+      <view>
+        <radio-group name="votetype">
+          <label class="radio">
+            <radio value="1" checked />单选</label>
+          <label class="radio">
+            <radio value="0" />多选</label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>标题：</view>
+      <view>
+        <input name="votetitle" maxlength="40" placeholder-style="font-size:12px" placeholder="请输入投票的主题" auto-focus/>
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>选项1：</view>
+      <view>
+        <input name="voteopt1" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>选项2：</view>
+      <view>
+        <input name="voteopt2" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+      </view>
+    </view>
+    <block wx:if="{{op3condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项3：</view>
+        <view>
+          <input name="voteopt3" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt3condition}}">
+          <view id="v3v">
+            <button size="mini" data-id="3" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op4condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项4：</view>
+        <view>
+          <input name="voteopt4" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt4condition}}">
+          <view id="v4v">
+            <button size="mini" data-id="4" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op5condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项5：</view>
+        <view>
+          <input name="voteopt5" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt5condition}}">
+          <view id="v5v">
+            <button size="mini" data-id="5" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op6condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项6：</view>
+        <view>
+          <input name="voteopt6" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt6condition}}">
+          <view id="v6v">
+            <button size="mini" data-id="6" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op7condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项7：</view>
+        <view>
+          <input name="voteopt7" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt7condition}}">
+          <view id="v7v">
+            <button size="mini" data-id="7" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op8condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项8：</view>
+        <view>
+          <input name="voteopt8" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt8condition}}">
+          <view id="v8v">
+            <button size="mini" data-id="8" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op9condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项9：</view>
+        <view>
+          <input name="voteopt9" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt9condition}}">
+          <view id="v9v">
+            <button size="mini" data-id="9" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op10condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项10：</view>
+        <view>
+          <input name="voteopt10" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt10condition}}">
+          <view id="v10v">
+            <button size="mini" data-id="10" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op11condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项11：</view>
+        <view>
+          <input name="voteopt11" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt11condition}}">
+          <view id="v11v">
+            <button size="mini" data-id="11" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op12condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项12：</view>
+        <view>
+          <input name="voteopt12" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt12condition}}">
+          <view id="v12v">
+            <button size="mini" data-id="12" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op13condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项13：</view>
+        <view>
+          <input name="voteopt13" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt13condition}}">
+          <view id="v13v">
+            <button size="mini" data-id="13" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op14condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项14：</view>
+        <view>
+          <input name="voteopt14" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt14condition}}">
+          <view id="v14v">
+            <button size="mini" data-id="4" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op15condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项15：</view>
+        <view>
+          <input name="voteopt15" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt15condition}}">
+          <view id="v15v">
+            <button size="mini" data-id="15" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op16condition}}">
+      <view id="v16" class="flex-wrp" style="flex-direction: row;">
+        <view>选项16：</view>
+        <view>
+          <input name="voteopt16" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt16condition}}">
+          <view id="v16v">
+            <button size="mini" data-id="16" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>    
+    <button bindtap="addOption" size="1" >+添加选项</button>
+  </view>
+  <view class="btn-area">
+    <button formType="submit">创建微投票主题</button>
+  </view>
+</form>
