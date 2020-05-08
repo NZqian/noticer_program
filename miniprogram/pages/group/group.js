@@ -20,9 +20,9 @@ Page({
     })
   },
 
-  gotovote:function(options){
+  gotoAddvote:function(options){
     wx.navigateTo({
-      url: '/pages/votepages/vote/index/index',
+      url: '/pages/group/vote/createvote/createvote',
     })
   },
 

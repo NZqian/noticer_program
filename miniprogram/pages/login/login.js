@@ -29,6 +29,7 @@ Page({
               students: [name],
               notices: [],
               admins: [],
+              vote:[],
               type: group['type']
             }
           })

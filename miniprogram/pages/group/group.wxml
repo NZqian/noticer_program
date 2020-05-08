@@ -9,8 +9,8 @@
     <button class="cu-btn bg-blue shadow" bindtap="gotoAddGroup">添加群组</button>
     <button class="cu-btn bg-blue shadow" bindtap="gotoNoticeSend">新建通知</button>
   </view>
-  <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
-    <button class="cu-btn bg-blue shadow" bindtap="gotovote">投票</button>
+  <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
+    <button class="cu-btn bg-blue shadow" bindtap="gotoAddvote">新建投票</button>
   </view>
 </view>
 
