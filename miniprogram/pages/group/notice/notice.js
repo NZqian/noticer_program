@@ -1,7 +1,3 @@
-/*未设置返参动作
- */
-/*返回至首页，而不是notice界面，需解决
- */
 // pages/layout/notice/modal1/modal1.js
 const app = getApp();
 Page({
@@ -14,7 +10,7 @@ Page({
   gotoNoticeDetail: function(options) {
     console.log(options.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/group/notice_detail/notice_detail?received=' + JSON.stringify(options.currentTarget.dataset.received) + '&notice=' + JSON.stringify(options.currentTarget.dataset.notice) + '&notices=' + JSON.stringify(this.data.notices) + '&thisGroup=' + JSON.stringify(this.data.thisGroup),
+      url: '/pages/group/notice/notice_detail/notice_detail?received=' + JSON.stringify(options.currentTarget.dataset.received) + '&notice=' + JSON.stringify(options.currentTarget.dataset.notice) + '&notices=' + JSON.stringify(this.data.notices) + '&thisGroup=' + JSON.stringify(this.data.thisGroup),
     })
   },
 

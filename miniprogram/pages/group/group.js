@@ -22,7 +22,7 @@ Page({
 
   gotoNoticeSend: function(options) {
     wx.navigateTo({
-      url: '/pages/group/notice_send/notice_send',
+      url: '/pages/group/notice/notice_send/notice_send',
     })
   },
 

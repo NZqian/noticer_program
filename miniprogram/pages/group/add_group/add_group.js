@@ -16,10 +16,10 @@ Page({
   },
 
   confirm: function(e) {
-    
+    /*
     var util = require("../../../utils/util.js")
     util.addAdminIntoDB(this.data.groupID, app.globalData.userdata['name'])
-    /*
+    */
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('Groups').doc(this.data.groupID).get().then(res => {
@@ -28,11 +28,23 @@ Page({
         db.collection('Groups').doc(this.data.groupID).update({
           data: {
             admins: _.push(app.globalData.userdata['name'])
+          }, success: res => {
+            wx.showToast({
+              title: '加入成功',
+              duration: 2000,
+              success: function () {
+                var util = require("../../../utils/util.js")
+                util.getGroups()
+                setTimeout(function () {
+                  wx.navigateBack()
+                }, 2000);
+              }
+            });
           }
         })
       }
     })
-    */
+    
   },
 
   onLoad: function(options) {

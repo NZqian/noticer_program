@@ -86,7 +86,7 @@ Page({
             title: '发布成功',
             duration: 2000,
             success: function () {
-              var util = require("../../../utils/util.js")
+              var util = require("../../../../utils/util.js")
               util.getGroups()
               setTimeout(function () {           
                 wx.navigateBack()

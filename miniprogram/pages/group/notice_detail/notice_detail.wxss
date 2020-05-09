@@ -1,9 +1,0 @@
-/* miniprogram/pages/layout/notice/received/received.wxss */
-.text{
-  font-size: 30rpx;
-  color:  gray;
-  display: block;
-  margin-top: 30rpx;
-  margin-right:45rpx;
-  margin-left:45rpx;
-}
