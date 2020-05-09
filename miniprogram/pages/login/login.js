@@ -100,7 +100,6 @@ Page({
         }
       }
     })
-
     wx.showToast({
       title: '登录中',
       icon: 'loading',

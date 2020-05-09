@@ -36,7 +36,7 @@ Component({
       wx.showToast({
         title: '载入中',
         icon: 'loading',
-        duration: 2000
+        duration: 1500
       })
     }
   }

@@ -2,7 +2,7 @@
   <view slot="backText">返回</view>
 </cu-custom>
 
-<view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}">
+<view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}" style="height:calc(100vh - {{CustomBar}}px - 50px)">
   <view class="cu-item">
     <view class="cu-avatar round lg">!</view>
     <view class="content">
@@ -26,3 +26,7 @@
     </view>
   </view>
 </block>
+
+<view class="padding flex flex-direction">
+  <button class="cu-btn bg-green lg" bindtap="gotoNoticeSend">添加通知</button>
+</view>

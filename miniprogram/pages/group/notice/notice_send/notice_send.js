@@ -11,9 +11,6 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
-    /*课程序号list
-     */
-    groups: [],
     time: '12:00',
     date: '2020-4-15',
     textareaAInput(e) {
@@ -24,14 +21,6 @@ Page({
     title: "",
     content: "",
     groupID: "",
-  },
-  groupChange: function(e){
-    var groupIndex = e.detail.value
-    //console.log(classIndex)
-    this.setData({
-      groupIndex: groupIndex,
-      groupID: this.data.groups[groupIndex]['_id']
-    })
   },
   TimeChange: function(e) {
     var time = e.detail.value;
@@ -70,6 +59,13 @@ Page({
       for (var i = 0; i < nameList.length; i++) {
         receiveStatus[nameList[i]] = 0
       }
+      var notices = this.data.notices
+      notices.push({
+        title: title,
+        content: content,
+        time: time,
+        date: date,
+        received: receiveStatus})
       db.collection('Groups').doc(groupID).update({
         data: {
           notices: _.push({
@@ -81,14 +77,20 @@ Page({
           })
         },
         success: res=>{
-          
+          console.log(res)
           wx.showToast({
             title: '发布成功',
             duration: 2000,
-            success: function () {
+            success: res=> {
               var util = require("../../../../utils/util.js")
               util.getGroups()
-              setTimeout(function () {           
+              setTimeout(function () {
+                var pages = getCurrentPages();
+                var prevPage = pages[pages.length - 2];  //上一个页面
+                console.log(notices)
+                prevPage.setData({
+                  notices: notices
+                })
                 wx.navigateBack()
               }, 2000);
             }
@@ -105,9 +107,11 @@ Page({
     console.log(this.data.content)
     this.addNoticeintoDB(this.data.title, this.data.content, this.data.time, this.data.date, this.data.groupID)
   },
-  onLoad() {
+  onLoad: function(options) {
+    console.log(options)
     this.setData({
-      groups: app.globalData.groups
+      groupID: JSON.parse(options.groupID),
+      notices: JSON.parse(options.notices)
     })
   },
 })

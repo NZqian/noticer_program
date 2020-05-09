@@ -10,9 +10,6 @@ Page({
 
   gotoNotice: function(options) {
     console.log(options.currentTarget.dataset)
-    /*
-    wx.setStorageSync("notices", options.currentTarget.dataset.notices)
-    wx.setStorageSync("group", c)*/
     console.log(options.currentTarget.dataset.notices)
     console.log(options.currentTarget.dataset.group)
     wx.navigateTo({
@@ -20,17 +17,12 @@ Page({
     })
   },
 
-  gotoNoticeSend: function(options) {
+  gotoAddGroup: function(options) {
     wx.navigateTo({
-      url: '/pages/group/notice/notice_send/notice_send',
+      url: '/pages/group/add_group/add_group?'
     })
   },
 
-  gotoAddGroup: function(options) {
-    wx.navigateTo({
-      url: '/pages/group/add_group/add_group',
-    })
-  },
   onLoad() {
     if (app.globalData.userdata['type'] === "admin") {
       this.setData({

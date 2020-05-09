@@ -4,7 +4,7 @@ var app = getApp()
 
 Page({
   data: {
-    motto: 'Copyright@一个不愿意透露姓名的小组',
+    motto: 'Copyright@不愿意透露姓名的小组',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -24,13 +24,15 @@ Page({
         userType: 0,
       })
     }
+    this.setData({
+      number: app.globalData.userdata['username'],
+      academy: app.globalData.userdata['academy'],
+      name: app.globalData.userdata['name']
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        number: app.globalData.userdata['username'],
-        academy: app.globalData.userdata['academy'],
-        name: app.globalData.userdata['name']
+        hasUserInfo: true
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -92,7 +94,7 @@ Page({
   onShareAppMessage: function() {
     return {
       title: '将讯必达分享给朋友',
-      path: '/pages/login/login',
+      path: '/pages/me/me',
       imageUrl: '/pages/images/title.png'
     }
   }

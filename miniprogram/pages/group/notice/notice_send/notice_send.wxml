@@ -6,14 +6,7 @@
 		<view class="title">通知标题</view>
 		<input placeholder="如：新作业通知" bindinput="titleInput"></input>
 	</view>
-	<view class="cu-form-group margin-top">
-		<view class="title">课程序号</view>
-		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
-			<view class="picker">
-				{{groupIndex?groups[groupIndex]._id:'选择群组'}}
-			</view>
-		</picker>
-	</view>
+
 	<view class="cu-form-group">
 		<view class="title">时间选择</view>
 		<picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="TimeChange">
