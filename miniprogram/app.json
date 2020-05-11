@@ -9,7 +9,6 @@
     "pages/me/me",
     "pages/group/add_group/add_group",
     "pages/group/vote/createvote/createvote",
-    "pages/group/vote/index/index",
     "pages/group/vote/myvote/myvote",
     "pages/group/vote/voteitem/voteitem",
     "pages/group/vote/voteresult/voteresult"

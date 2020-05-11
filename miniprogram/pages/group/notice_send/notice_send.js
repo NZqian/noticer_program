@@ -27,7 +27,6 @@ Page({
   },
   groupChange: function(e){
     var groupIndex = e.detail.value
-    //console.log(classIndex)
     this.setData({
       groupIndex: groupIndex,
       groupID: this.data.groups[groupIndex]['_id']
