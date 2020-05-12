@@ -37,10 +37,4 @@
   <view class="btn-area">
     <button formType="submit">投票</button>
   </view>
-  <view class="btn-area">
-    <button bindtap="genQrCode">生成二维码</button>
-  </view>
-  <view class="btn-area">
-    <image style="width: 200px; height: 200px;" src="{{QRCode}}"></image>
-  </view>
 </form>

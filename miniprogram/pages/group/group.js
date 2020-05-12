@@ -17,11 +17,7 @@ Page({
     })
   },
 
-  gotoAddvote:function(options){
-    wx.navigateTo({
-      url: '/pages/group/vote/createvote/createvote',
-    })
-  },
+  
 
   gotoNoticeSend: function() {
     wx.navigateTo({

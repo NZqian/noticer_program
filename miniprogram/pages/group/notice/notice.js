@@ -14,6 +14,14 @@ Page({
     })
   },
 
+  gotovoteDetail: function(options) {
+    console.log(options.currentTarget.dataset)
+    wx.navigateTo({
+      url: '/pages/group/vote/vote_detail/voteitem/vote_item?received=' + JSON.stringify(options.currentTarget.dataset.received) + '&vote=' + JSON.stringify(options.currentTarget.dataset.vote) + '&vote=' + JSON.stringify(this.data.vote) + '&thisGroup=' + JSON.stringify(this.data.thisGroup)
+    })
+  },
+
+
   onLoad: function(options) {
     if (app.globalData.userdata['type'] === "admin") {
       this.setData({
@@ -34,6 +42,13 @@ Page({
   onShow: function(options) {
   },
 
+  gotoAddvote:function(options){
+    wx.navigateTo({
+      url: '/pages/group/vote/createvote/createvote?groupID=' + JSON.stringify(this.data.thisGroup._id) + '&notices=' + JSON.stringify(this.data.notices)
+    })
+  },
+
+  
   gotoNoticeSend: function(options) {
     wx.navigateTo({
       url: '/pages/group/notice/notice_send/notice_send?groupID=' + JSON.stringify(this.data.thisGroup._id) + '&notices=' + JSON.stringify(this.data.notices)

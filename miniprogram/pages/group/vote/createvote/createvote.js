@@ -75,12 +75,14 @@ Page({
     var postdata = this.data
     var nameList = []
     var receiveStatus = {}
-    db.collection('Groups').doc(postdata.groupID).get().then(res => {
+    console.log(this.data.groupID)
+    db.collection('Groups').doc(this.data.groupID).get().then(res => {
+      
       nameList = res.data.students
       for (var i = 0; i < nameList.length; i++) {
         receiveStatus[nameList[i]] = 0
       }
-      db.collection('Groups').doc(postdata.groupID).update({
+      db.collection('Groups').doc(this.data.groupID).update({
         data:{
           vote:_.push({
             radioItems:postdata.radioItems,
@@ -100,15 +102,24 @@ Page({
           content: res.data.message,
           showCancel: false,
           success: function (resSM) {
-            if (resSM.confirm) {
-              if (res.data.code == 1) { //成功
-                wx.navigateTo({
-                  url: '/pages/group/vote/myvote/myvote?openid='+this.openid
-                })
-              } else {//失败
-                //console.log(res.data)
+            console.log(res)
+            wx.showToast({
+              title: '发布成功',
+              duration: 2000,
+              success: res=> {
+                var util = require("../../../../utils/util.js")
+                util.getGroups()
+                setTimeout(function () {
+                  var pages = getCurrentPages();
+                  var prevPage = pages[pages.length - 2];  //上一个页面
+                  console.log(notices)
+                  prevPage.setData({
+                    vote: vote
+                  })
+                  wx.navigateBack()
+                }, 2000);
               }
-            }
+            });
           }
         });
       }
@@ -128,14 +139,14 @@ vote_submit: function(e) {
     radioItems:formdata.radioItems,
  }   
   )
-  console.log(this.data)
-  console.log(this.openid)
   this.vote_creat()
 },
-  onLoad () {
-    j = 2
+
+  onLoad: function(options) {
+    j=2
     this.setData({
-      groups: app.globalData.groups
+      groupID: JSON.parse(options.groupID),
+      vote: JSON.parse(options.vote)
     })
   },
 })

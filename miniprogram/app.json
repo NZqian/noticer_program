@@ -9,9 +9,8 @@
     "pages/me/me",
     "pages/group/add_group/add_group",
     "pages/group/vote/createvote/createvote",
-    "pages/group/vote/myvote/myvote",
-    "pages/group/vote/voteitem/voteitem",
-    "pages/group/vote/voteresult/voteresult"
+    "pages/group/vote/vote_detail/voteitem/voteitem",
+    "pages/group/vote/vote_detail/voteresult/voteresult"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -8,9 +8,6 @@
   <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
     <button class="cu-btn bg-blue shadow" bindtap="gotoAddGroup">添加群组</button>
   </view>
-  <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
-    <button class="cu-btn bg-blue shadow" bindtap="gotoAddvote">新建投票</button>
-  </view>
 </view>
 
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">

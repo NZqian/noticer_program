@@ -26,7 +26,23 @@
     </view>
   </view>
 </block>
+<block wx:for="{{vote}}" wx:for-item="avote">
+  <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{vote.received}}" data-vote="{{avote}}">
+    <view class="cu-item">
+      <view class="cu-avatar round lg">?</view>
+      <view class="content">
+        <view class="text-black">{{avote.votetitle}}
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
 
 <view class="padding flex flex-direction">
   <button class="cu-btn bg-green lg" bindtap="gotoNoticeSend">添加通知</button>
 </view>
+
+  <view class="padding flex flex-direction" wx:if="{{userType === 1}}">
+    <button class="cu-btn bg-blue lg" bindtap="gotoAddvote">新建投票</button>
+  </view>
+  
