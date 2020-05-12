@@ -16,10 +16,6 @@ Page({
   },
 
   confirm: function(e) {
-    /*
-    var util = require("../../../utils/util.js")
-    util.addAdminIntoDB(this.data.groupID, app.globalData.userdata['name'])
-    */
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('Groups').doc(this.data.groupID).get().then(res => {
@@ -44,7 +40,6 @@ Page({
         })
       }
     })
-    
   },
 
   onLoad: function(options) {

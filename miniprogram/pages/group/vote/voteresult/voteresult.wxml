@@ -1,0 +1,27 @@
+
+<!--pages/voteresult/voteresult.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <input name="unionid" value="{{userInfo.unionId}}" hidden />
+  <input name="openid" value="xxoo" hidden />
+  <input name="voteid" value="{{voteid}}" hidden />
+  <input name="voteType" value="{{voteType}}" hidden />
+  <view class="section section_gap">
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>标题：{{title}}（
+        <block wx:if="{{voteType==1}}">单选</block>
+        <block wx:if="{{voteType==0}}">多选</block>）</view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>
+    <view wx:for="{{items}}" wx:key="unique" wx:for-item="item">
+      <view class="flex-wrp" style="flex-direction: row;">
+        {{item.item}} ({{item.counts}})
+      </view>
+      <view class="flex-wrp" style="flex-direction: row;">
+        <progress percent="{{item.percents}}" stroke-width="12" show-info />
+      </view>
+    </view>
+  </view>
+</form>

@@ -17,6 +17,18 @@ Page({
     })
   },
 
+  gotoAddvote:function(options){
+    wx.navigateTo({
+      url: '/pages/group/vote/createvote/createvote',
+    })
+  },
+
+  gotoNoticeSend: function() {
+    wx.navigateTo({
+      url: '/pages/group/notice_send/notice_send',
+    })
+  },
+
   gotoAddGroup: function(options) {
     wx.navigateTo({
       url: '/pages/group/add_group/add_group?'
@@ -33,12 +45,17 @@ Page({
         userType: 0,
       })
     }
+    this.setData({
+      groups: app.globalData.groups,
+      academyGroup: app.globalData.academyGroup
+    })
   },
   onShow() {
     var util = require("../../utils/util.js")
     util.getGroups()
     this.setData({
-      groups: app.globalData.groups
+      groups: app.globalData.groups,
+      academyGroup: app.globalData.academyGroup
     })
   },
 });

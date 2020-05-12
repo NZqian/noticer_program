@@ -7,7 +7,11 @@
     "pages/group/notice/notice_detail/notice_detail",
     "pages/group/group",
     "pages/me/me",
-    "pages/group/add_group/add_group"
+    "pages/group/add_group/add_group",
+    "pages/group/vote/createvote/createvote",
+    "pages/group/vote/myvote/myvote",
+    "pages/group/vote/voteitem/voteitem",
+    "pages/group/vote/voteresult/voteresult"
   ],
   "window": {
     "backgroundTextStyle": "light",

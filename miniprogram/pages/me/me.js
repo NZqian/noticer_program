@@ -97,5 +97,5 @@ Page({
       path: '/pages/me/me',
       imageUrl: '/pages/images/title.png'
     }
-  }
+  },
 })

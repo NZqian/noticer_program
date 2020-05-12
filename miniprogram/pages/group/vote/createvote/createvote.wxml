@@ -1,0 +1,111 @@
+
+<!--createvote.wxml-->
+<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{true}}">
+	<view slot="backText">返回</view>
+</cu-custom>
+<form bindsubmit='vote_submit'>
+  <input name="unionid" value="{{userInfo.unionId}}" hidden />
+  <input name="openid" value="{{userInfo.openid}}" hidden />
+  <view class="section section_gap">
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view style="height: 15px;flex-direction:row;"></view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>类型：</view>
+      <view>
+        <radio-group name="votetype">
+          <label class="radio">
+            <radio value="1" checked />单选</label>
+          <label class="radio">
+            <radio value="0" />多选</label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>标题：</view>
+      <view>
+        <input name="votetitle" maxlength="40" placeholder-style="font-size:12px" placeholder="请输入投票的主题" auto-focus/>
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>选项1：</view>
+      <view>
+        <input name="voteopt1" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+      </view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>选项2：</view>
+      <view>
+        <input name="voteopt2" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+      </view>
+    </view>
+    <block wx:if="{{op3condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项3：</view>
+        <view>
+          <input name="voteopt3" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt3condition}}">
+          <view id="v3v">
+            <button size="mini" data-id="3" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op4condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项4：</view>
+        <view>
+          <input name="voteopt4" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt4condition}}">
+          <view id="v4v">
+            <button size="mini" data-id="4" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op5condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项5：</view>
+        <view>
+          <input name="voteopt5" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt5condition}}">
+          <view id="v5v">
+            <button size="mini" data-id="5" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+    <block wx:if="{{op6condition}}">
+      <view class="flex-wrp" style="flex-direction: row;">
+        <view>选项6：</view>
+        <view>
+          <input name="voteopt6" maxlength="16" placeholder-style="font-size:12px" placeholder="点击输入（不超过16个字）" />
+        </view>
+        <block wx:if="{{bt6condition}}">
+          <view id="v6v">
+            <button size="mini" data-id="6" bindtap="delOption">-</button>
+          </view>
+        </block>
+      </view>
+    </block>
+  
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>    
+    <button bindtap="addOption" size="1" >+添加选项</button>
+  </view>
+  <view class="cu-form-group margin-top">
+		<view class="title">课程序号</view>
+		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
+			<view class="picker">
+				{{groupIndex?groups[groupIndex]._id:'选择群组'}}
+			</view>
+		</picker>
+	</view>
+  <view class="btn-area">
+    <button formType="submit" >创建投票主题</button>
+  </view>
+ </form>
+  

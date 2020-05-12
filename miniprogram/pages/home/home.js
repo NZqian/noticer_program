@@ -29,7 +29,7 @@ Component({
         url: '/pages' + e.currentTarget.dataset.url
       })
     },
-    onLoad: function () {
+    onLoad() {
       var util = require("../../utils/util.js")
       util.getGroups()
       util.getAllGroups()
