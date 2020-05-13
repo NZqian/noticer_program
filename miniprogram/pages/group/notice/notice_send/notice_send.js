@@ -87,7 +87,6 @@ Page({
               setTimeout(function () {
                 var pages = getCurrentPages();
                 var prevPage = pages[pages.length - 2];  //上一个页面
-                console.log(notices)
                 prevPage.setData({
                   notices: notices
                 })
