@@ -50,8 +50,6 @@ Page({
           wx.setStorageSync('isUserInfoStored', true)
           wx.setStorageSync('userdata', res.data[0])
           
-          let storeddata = wx.getStorageSync('userdata')
-          console.log(storeddata)
           wx.switchTab({
             url: '../home/home'
           })
@@ -89,10 +87,6 @@ Page({
               console.log(res.data);
               wx.setStorageSync('isUserInfoStored', true)
               wx.setStorageSync('userdata', res.data)
-              /*
-              wx.redirectTo({
-                url: '../home/home',
-              })*/
               wx.switchTab({
                 url: '../home/home'
               })
