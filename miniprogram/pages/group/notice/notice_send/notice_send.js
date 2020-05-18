@@ -77,7 +77,8 @@ Page({
           })
         },
         success: res=>{
-          console.log(res)
+          //console.log(res)
+          console.log("test::::::::::::::",notices)
           wx.showToast({
             title: '发布成功',
             duration: 2000,

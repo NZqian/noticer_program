@@ -1,67 +1,105 @@
 // pages/voteitem/voteitem.js
+const app = getApp();
 Page({
   data: {
-    voteid: 0,
     voteType: 0,
-    // voteItemId: 0,
     title: "",
-    items: {},
-    QRCode:""
+    items: [],
+    received: [],
+    name: "",
+    choice:"",
+    vote:"",
+    thisGroup:"",
+    namelist:"",
+  },
+  checkboxChange(e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    const items = this.data.items
+    const values = e.detail.value
+    for (let i = 0, lenI = items.length; i < lenI; ++i) {
+      items[i].checked = false
+      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (items[i].value === values[j]) {
+          items[i].checked = true
+          break
+        }
+      }
+    }
+    this.setData({
+      items
+    })
+  },
+  radioChange(e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    const items = this.data.items
+    for (let i = 0, len = items.length; i < len; ++i) {
+      items[i].checked = items[i].value === e.detail.value
+    }
+
+    this.setData({
+      items,
+      choice:e.detail.value,
+    })
   },
 
   formSubmit: function (e) {
-    var postdata = e.detail.value
-    wx.request({
-      url: 'https://www.ningziqian.club:8000/vote/vote',
-      data: postdata,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'POST',
-      success: function (res) {
-        wx.showModal({
-          title: '提示',
-          content: res.data.message,
-          showCancel: false,
-          success: function (resSM) {
-            if (resSM.confirm) {
-              if (res.data.code == 1) { //成功
-                wx.navigateTo({
-                  url: '../voteresult/voteresult?id=' + postdata.voteid
-                })
-              } else {//失败
-                wx.navigateTo({
-                  url: '../myvote/myvote?openid=xxoo'
-                })
-              }
-            }
-          }
-        })
-        console.log(res.data)
+    const db = wx.cloud.database()
+    const _ = db.command
+
+    let vote=this.data.vote
+    let thisGroup = this.data.thisGroup
+    let name = app.globalData.userdata['name']
+    for (var i = 0; i < vote.length; i++) {
+      if (vote[i]['votetitle'] == this.data.title) {
+        vote[i]['received'][name] = this.data.choice
+        break
+      }
+    }
+    db.collection('Groups').doc(thisGroup['_id']).update({
+      data: {
+        vote:vote
       }
     })
-    console.log('form发生了submit事件，携带数据为：', postdata)
   },
 
   onLoad: function (options) {
-    // 页面初始化 options为页面跳转所带来的参数
-    console.log(options);
-    var that = this
-    that.setData({ "voteid": options.id })
-
-    wx.request({
-      url: 'https://www.ningziqian.club:8000/vote/detail',
-      data: { voteid: options.id },
-      method: 'GET', 
-      success: function (res) {
-        var changed = {}
-        let v = res.data.data.vote;
-        let vi = res.data.data.voteItems;
-        changed['title'] = v.title
-        changed['voteType'] = v.single_select
-        changed['items'] = vi
-        that.setData(changed)
-      },
+    if (app.globalData.userdata['type'] === "admin") {
+      this.setData({
+        userType: 1,
+      })
+    } else {
+      this.setData({
+        userType: 0,
+      })
+    }
+    console.log(options)
+    let received = JSON.parse(options.received)
+    let avote = JSON.parse(options.avote)
+    let thisGroup = JSON.parse(options.thisGroup)
+    let vote = JSON.parse(options.vote)
+    let name = app.globalData.userdata['name']
+    this.setData({
+        received:received,
+        name:name,
+        namelist: Object.keys(received),
+        votetype:avote['votetype'],
+        title: avote['votetitle'],
+        thisGroup: thisGroup,
+        vote:vote,
+        items:[
+          {value:avote.voteopt1,name:avote.voteopt1},
+          {value:avote.voteopt2,name:avote.voteopt2},
+          {value:avote.voteopt3,name:avote.voteopt3},
+          {value:avote.voteopt4,name:avote.voteopt4},
+          {value:avote.voteopt5,name:avote.voteopt5},
+          {value:avote.voteopt6,name:avote.voteopt6},
+        ]
     })
-  },
-})
+    console.log("test:::::::::::::::::",this.data.items)
+    //changed['title'] = v.title
+    //changed['voteType'] = v.single_select
+    // changed['items'] = vi
+   // that.setData(changed)
+      },
+      onShow: function(options) {}
+    })

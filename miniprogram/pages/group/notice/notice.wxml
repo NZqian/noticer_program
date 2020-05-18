@@ -27,7 +27,7 @@
   </view>
 </block>
 <block wx:for="{{vote}}" wx:for-item="avote">
-  <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{vote.received}}" data-vote="{{avote}}">
+  <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{avote.received}}" data-avote="{{avote}}">
     <view class="cu-item">
       <view class="cu-avatar round lg">?</view>
       <view class="content">

@@ -12,8 +12,10 @@ Page({
     console.log(options.currentTarget.dataset)
     console.log(options.currentTarget.dataset.notices)
     console.log(options.currentTarget.dataset.group)
+    console.log(options.currentTarget.dataset.vote)
+
     wx.navigateTo({
-      url: '/pages/group/notice/notice?notices=' + JSON.stringify(options.currentTarget.dataset.notices) + '&group=' + JSON.stringify(options.currentTarget.dataset.group),
+      url: '/pages/group/notice/notice?notices=' + JSON.stringify(options.currentTarget.dataset.notices) + '&group=' + JSON.stringify(options.currentTarget.dataset.group)+'&vote=' +JSON.stringify(options.currentTarget.dataset.vote),
     })
   },
 

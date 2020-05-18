@@ -77,18 +77,29 @@ Page({
         receiveStatus[nameList[i]] = 0
       }
       var vote=this.data.vote
+      vote.push({
+        votetitle: postdata.votetitle,
+        voteopt1: postdata.voteopt1,
+        voteopt2: postdata.voteopt2,
+        voteopt3: postdata.voteopt3,
+        voteopt4: postdata.voteopt4,
+        voteopt5: postdata.voteopt5,
+        voteopt6: postdata.voteopt6,
+        received: receiveStatus,
+        votetype: postdata.votetype
+      })
       db.collection('Groups').doc(this.data.groupID).update({
         data:{
           vote:_.push({
-            votetitle:postdata.votetitle,
-            voteopt1:postdata.voteopt1,
-            voteopt2:postdata.voteopt2,
-            voteopt3:postdata.voteopt3,
-            voteopt4:postdata.voteopt4,
-            voteopt5:postdata.voteopt5,
-            voteopt6:postdata.voteopt6,
-            received:receiveStatus,
-            votetype:postdata.votetype
+            votetitle: postdata.votetitle,
+            voteopt1: postdata.voteopt1,
+            voteopt2: postdata.voteopt2,
+            voteopt3: postdata.voteopt3,
+            voteopt4: postdata.voteopt4,
+            voteopt5: postdata.voteopt5,
+            voteopt6: postdata.voteopt6,
+            received: receiveStatus,
+            votetype: postdata.votetype
           })
         },
        success: function (res) {
@@ -133,7 +144,7 @@ vote_submit: function(e) {
     j=2
     this.setData({
       groupID: JSON.parse(options.groupID),
-      //vote: JSON.parse(options.vote)
+      vote: JSON.parse(options.vote)
     })
   },
 })

@@ -12,7 +12,7 @@
 
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
   <block wx:for="{{groups}}" wx:for-item="group">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-group="{{group}}">
+    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-vote="{{group.vote}}" data-group="{{group}}">
       <view class="cu-item">
         <view class="cu-avatar round lg">{{group.name[0]}}</view>
         <view class="content">
