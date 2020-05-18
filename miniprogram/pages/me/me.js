@@ -66,7 +66,7 @@ Page({
   },
 
   quit: function() {
-    wx.setStorageSync('judge', false)
+    wx.setStorageSync('isUserInfoStored', false)
     wx.redirectTo({
       url: '/pages/login/login',
     })

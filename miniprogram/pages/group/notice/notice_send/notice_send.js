@@ -8,6 +8,7 @@ const _ = db.command
 
 Page({
   data: {
+    fileName: "选择文件",
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     index: null,
@@ -49,7 +50,7 @@ Page({
     })
   },
   //将通知内容写入数据库
-  addNoticeintoDB: function(title, content, time, date, groupID) {
+  addNoticeintoDB: function(title, content, time, date, groupID, fileID, fileName) {
     var receiveStatus = {}
     var nameList = []
     db.collection('Groups').doc(groupID).get().then(res => {
@@ -65,7 +66,9 @@ Page({
         content: content,
         time: time,
         date: date,
-        received: receiveStatus})
+        received: receiveStatus,
+        fileID: fileID,
+        fileName: fileName})
       db.collection('Groups').doc(groupID).update({
         data: {
           notices: _.push({
@@ -73,7 +76,9 @@ Page({
             content: content,
             time: time,
             date: date,
-            received: receiveStatus
+            received: receiveStatus,
+            fileID: fileID,
+            fileName: fileName
           })
         },
         success: res=>{
@@ -99,13 +104,42 @@ Page({
       })
     })
   },
+
+  chooseFile: function(){
+    let that = this
+    wx.chooseMessageFile({
+      count: 1,
+      success(res){
+        that.setData({
+          fileName: res.tempFiles[0].name,
+          filePath: res.tempFiles[0].path
+        })
+        console.log(that.data.fileName)
+        console.log(that.data.filePath)
+      }
+    })
+  },
+
   submit: function() {
     console.log(this.data.title)
     console.log(this.data.groupID)
     console.log(this.data.time)
     console.log(this.data.date)
     console.log(this.data.content)
-    this.addNoticeintoDB(this.data.title, this.data.content, this.data.time, this.data.date, this.data.groupID)
+
+    let that = this
+    wx.cloud.uploadFile({
+      cloudPath: that.data.fileName,
+      filePath: that.data.filePath,
+      success: res => {
+        that.setData({
+          fileID: res.fileID
+        })
+        that.addNoticeintoDB(that.data.title, that.data.content, that.data.time, that.data.date, that.data.groupID, that.data.fileID, that.data.fileName)
+        console.log(that.data.fileID)
+      }
+    })
+    
   },
   onLoad: function(options) {
     console.log(options)

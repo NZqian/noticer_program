@@ -20,13 +20,11 @@
     <view class="cu-item">
       <view class="cu-avatar round lg">!</view>
       <view class="content">
-        <view class="text-black">{{notice.title}}
-        </view>
+        <view class="text-black">{{notice.title}}</view>
       </view>
     </view>
   </view>
 </block>
-
-<view class="padding flex flex-direction">
+<view wx:if="{{userType === 1}}" class="padding flex flex-direction">
   <button class="cu-btn bg-green lg" bindtap="gotoNoticeSend">添加通知</button>
 </view>

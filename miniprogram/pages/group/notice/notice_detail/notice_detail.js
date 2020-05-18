@@ -30,13 +30,12 @@ Page({
         userType: 0,
       })
     }
-    console.log(options)
     let received = JSON.parse(options.received)
     let notice = JSON.parse(options.notice)
     let thisGroup = JSON.parse(options.thisGroup)
     let notices = JSON.parse(options.notices)
     let name = app.globalData.userdata['name']
-    console.log(received[name])
+    console.log(notice)
     this.setData({
       received: received,
       name: name,
@@ -44,6 +43,8 @@ Page({
       time: notice['time'],
       title: notice['title'],
       content: notice['content'],
+      fileID: notice['fileID'],
+      fileName: notice['fileName'],
       thisReceived: received[name],
       thisGroup: thisGroup,
       notices: notices
@@ -52,6 +53,24 @@ Page({
   },
   onShow: function(options) {
 
+  },
+
+  downLoadFile: function() {
+    wx.showToast({
+      title: '下载成功',
+      duration: 2000,
+      success: res => {
+        var file = wx.cloud.downloadFile({
+          fileID: this.data.fileID,
+          success: res => {
+            console.log(res)
+            wx.saveFile({
+              tempFilePath: res.tempFilePath,
+            })
+          }
+        })
+      }
+    })
   },
 
   confirm: function() {

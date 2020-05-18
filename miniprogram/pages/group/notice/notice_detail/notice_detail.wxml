@@ -47,5 +47,5 @@
   <text class="text">
   {{content}}
    </text>
-  
+<button bindtap="downLoadFile">下载附件{{fileName}}</button>  
 </view>
