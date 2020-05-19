@@ -96,14 +96,6 @@
     </view>    
     <button bindtap="addOption" size="1" >+添加选项</button>
   </view>
-  <view class="cu-form-group margin-top">
-		<view class="title">课程序号</view>
-		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
-			<view class="picker">
-				{{groupIndex?groups[groupIndex]._id:'选择群组'}}
-			</view>
-		</picker>
-	</view>
   <view class="btn-area">
     <button formType="submit" >创建投票主题</button>
   </view>

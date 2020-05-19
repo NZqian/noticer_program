@@ -1,0 +1,51 @@
+<cu-custom bgImage="{{noticedetail_jpg}}" isBack="{{true}}">
+  <view slot="backText">返回</view>
+</cu-custom>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <input name="voteType" value="{{voteType}}" hidden />
+  <view class="section section_gap">
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;">
+      <view>标题：{{title}}（
+        <block wx:if="{{voteType==0}}">单选</block>
+        <block wx:if="{{voteType==1}}">多选</block>）</view>
+    </view>
+    <view class="flex-wrp" style="flex-direction: row;" class="br">
+    </view>
+    <block wx:if="{{voteType==0}}">
+      <view class="page__bd">
+         <view class="weui-cells weui-cells_after-title">
+           <radio-group bindchange="radioChange">
+               <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+                <view class="weui-cell__hd">
+                  <radio value="{{item.value}}" checked="true"/>
+                </view>
+                <view class="weui-cell__bd">{{item.name}}</view>
+               </label>
+           </radio-group>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{voteType==1}}">
+      <view class="weui-cells weui-cells_after-title">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+            <view class="weui-cell__hd">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </checkbox-group>
+      </view>
+    </block>
+  </view>
+  <view class="btn-area">
+    <button formType="submit">投票</button>
+  </view>
+</form>
+<view wx:if="{{userType ===  1}}">
+      <view class="text-box" scroll-y="true" scroll-top="{{scrollTop}}">
+        <text wx:key="{{this}}"  wx:for="{{namelist}}" >{{item}} {{received[item]}} </text>
+      </view>
+</view>

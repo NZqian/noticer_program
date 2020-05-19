@@ -82,7 +82,8 @@ Page({
           })
         },
         success: res=>{
-          console.log(res)
+          //console.log(res)
+          console.log("test::::::::::::::",notices)
           wx.showToast({
             title: '发布成功',
             duration: 2000,
@@ -92,7 +93,6 @@ Page({
               setTimeout(function () {
                 var pages = getCurrentPages();
                 var prevPage = pages[pages.length - 2];  //上一个页面
-                console.log(notices)
                 prevPage.setData({
                   notices: notices
                 })
