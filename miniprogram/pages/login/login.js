@@ -42,7 +42,7 @@ Page({
     let that = this
     console.log("here")
     wx.requestSubscribeMessage({
-      tmplIds: ['aZzTkMDanrNDI4XyLGmg2I0-rMme4-IhyH0ws8zNYw8'],
+      tmplIds: ['3WIKWV4bJkNEPGhzgYZUaUIiBlKO4h0Z2BDY2TIV2e8'],
       success(res) {
         console.log(res)
       }

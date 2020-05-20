@@ -138,19 +138,18 @@ Page({
           method: "POST",
           data: {
             "touser": "oqfPs4kqE_Z6PRMy-P17BJ-ezRks",
-            "template_id": "aZzTkMDanrNDI4XyLGmg2I0-rMme4-IhyH0ws8zNYw8",
-            "page": "login",
+            "template_id": "3WIKWV4bJkNEPGhzgYZUaUIiBlKO4h0Z2BDY2TIV2e8",
             "miniprogram_state": "developer",
             "lang": "zh_CN",
             "data": {
               "thing1": {
-                "value": "asdfsd"
+                "value": this.data.groupName
               },
-              "time2": {
-                "value": "15:01"
+              "date4": {
+                "value": this.data.date + ' ' + this.data.time
               },
-              "thing3": {
-                "value": "asdfsd"
+              "thing6": {
+                "value": this.data.title
               }
             }
           },
@@ -181,6 +180,7 @@ Page({
     console.log(options)
     this.setData({
       groupID: JSON.parse(options.groupID),
+      groupName: JSON.parse(options.groupName),
       notices: JSON.parse(options.notices)
     })
   },
