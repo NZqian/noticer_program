@@ -46,6 +46,8 @@
 </form>
 <view wx:if="{{userType ===  1}}">
       <view class="text-box" scroll-y="true" scroll-top="{{scrollTop}}">
-        <text wx:key="{{this}}"  wx:for="{{namelist}}" >{{item}} {{received[item]}} </text>
+        <block wx:key="{{this}}"  wx:for="{{namelist}}" >
+           <view class="text-grey">{{item}} {{received[item]}} </view>
+        </block>
       </view>
 </view>

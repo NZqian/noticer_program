@@ -78,6 +78,7 @@ Page({
     let thisGroup = JSON.parse(options.thisGroup)
     let vote = JSON.parse(options.vote)
     let name = app.globalData.userdata['name']
+    
     this.setData({
         received:received,
         name:name,
@@ -86,15 +87,20 @@ Page({
         title: avote['votetitle'],
         thisGroup: thisGroup,
         vote:vote,
-        items:[
-          {value:avote.voteopt1,name:avote.voteopt1},
-          {value:avote.voteopt2,name:avote.voteopt2},
-          {value:avote.voteopt3,name:avote.voteopt3},
-          {value:avote.voteopt4,name:avote.voteopt4},
-          {value:avote.voteopt5,name:avote.voteopt5},
-          {value:avote.voteopt6,name:avote.voteopt6},
-        ]
+        avote:avote
     })
+
+    var changed = {}
+    console.log(this.data.avote)
+    var temp=this.data.avote['voteopt']
+    var j=0
+    for (var i = 0; i < temp.length; i++) {
+      if(temp[i]!=null){
+        changed['items[' + j + '].value'] = changed['items[' + j + '].name']=this.data.avote['voteopt'][i];
+        j++;
+      }else{}
+      }
+    this.setData(changed)
     console.log("test:::::::::::::::::",this.data.items)
     //changed['title'] = v.title
     //changed['voteType'] = v.single_select
