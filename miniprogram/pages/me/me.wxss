@@ -5,6 +5,7 @@
   background-color: #f3f3f3;
 }
 
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -14,10 +15,8 @@
 }
 
 .userinfo-avatar {
-  width: 180rpx;
-  height: 180rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  width: 50px; 
+  display: block;
 }
 
 .userinfo-nickname {
