@@ -46,5 +46,11 @@
         "selectedIconPath": "images/icon_right.jpg"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于显示天气数据"
+    }
   }
 }
+
