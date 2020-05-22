@@ -55,8 +55,18 @@ function addAdminIntoDB(_id, name){
   })
 }
 
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
+}
+
 module.exports = {
   getGroups: getGroups,
   getAllGroups: getAllGroups,
-  addAdminIntoDB: addAdminIntoDB
+  addAdminIntoDB: addAdminIntoDB,
+  formatTime: formatTime,
+  formatDate: formatDate
 }
