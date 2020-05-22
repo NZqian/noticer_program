@@ -9,8 +9,7 @@
     "pages/me/me",
     "pages/group/add_group/add_group",
     "pages/group/vote/createvote/createvote",
-    "pages/group/vote/vote_detail/voteitem/voteitem",
-    "pages/group/vote/vote_detail/voteresult/voteresult"
+    "pages/group/vote/vote_detail/voteitem/voteitem"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -24,8 +23,10 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#f10b2e",
+    "color": "#646464",
+    "selectedColor": "#000000",
+    "backgroundColor": "#e6e6e6",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/group/group",
