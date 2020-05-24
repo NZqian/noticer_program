@@ -2,108 +2,84 @@
 const app = getApp()
 const db=wx.cloud.database()
 const _ = db.command
-let j = 2
 Page({
-  data: {
+  data: 
+  {
+    tempopt:"",
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    radioItems: [
-      { title: '单选', name: 'single', value: '1', checked: 'ture' },
-      { title: '多选', name: 'multi', value: '0' },
-    ],
     votetitle:"",
-    votetype:0,
-    voteopt1:"",
-    voteopt2:"",
-    voteopt3:"",
-    voteopt4:"",
-    voteopt5:"",
-    voteopt6:"",
-    groupID:"",
+    voteopt:[],
     hidden: false,
-    op3condition: false,
-    op4condition: false,
-    op5condition: false,
-    op6condition: false,
-    bt3condition: false,
-    bt4condition: false,
-    bt5condition: false,
-    bt6condition: false,
   },
-  
-  radioChange: function (e) {
-    var checked = e.detail.value
-    var changed = {}
-    for (var i = 0; i < this.data.radioItems.length; i++) {
-      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
-        changed['radioItems[' + i + '].checked'] = true
-        changed['votetype']=i
-      } else {
-        changed['radioItems[' + i + '].checked'] = false
-      }
-    }
-    this.setData(changed)
+  getTitle: function(e)
+  {
+    var title= e.detail.value;
+    this.setData({
+        votetitle: title,
+    });
+    console.log(this.data.votetitle)
   },
-  addOption: function (e) {
-    var changed = {}
-    if (j < 16) {
-      changed['bt' + j + 'condition'] = false
-      j++
-    }
-    if (j <= 16) {
-      changed['op' + j + 'condition'] = true
-      changed['bt' + j + 'condition'] = true
-      this.setData(changed)
-    }
+
+  addOption: function (e) 
+  {
+      var voteopt=this.data.voteopt;
+      voteopt.push(e.detail.value.inputopt)
+      this.setData
+      ({
+        voteopt: voteopt,
+        tempopt: "",
+      });
+      e.detail.value.inputopt=""
+      console.log(this.data.voteopt);
   },
-  delOption: function (e) {
-    var changed = {}
-    if (j >= 3) {
-      changed['op' + j + 'condition'] = false
-      j--
-      changed['op' + j + 'condition'] = true
-      changed['bt' + j + 'condition'] = true
-      this.setData(changed)
-    }
+  delOption: function (e) 
+  {
+      var opt=this.data.voteopt;
+      opt.pop();
+      this.setData
+      ({
+        voteopt: opt,
+      });
+      console.log(this.data.voteopt);
   },
-  vote_creat: function () {
+  clrOption: function (e)
+  {
+    this.setData
+    ({
+      voteopt: {},
+    });
+    console.log(this.data.voteopt);
+  },
+  vote_submit: function(e)
+  {
+    console.log(this.data.votetitle,this.data.voteopt)
     var postdata = this.data
-    console.log(postdata)
+    console.log("test::::::",this.data)
     var nameList = []
     var receiveStatus = {}
     db.collection('Groups').doc(this.data.groupID).get().then(res => {
       nameList = res.data.students
-      for (var i = 0; i < nameList.length; i++) {
+      for (var i = 0; i < nameList.length; i++) 
+      {
         receiveStatus[nameList[i]] = 0
       }
       var vote=this.data.vote
       vote.push({
         votetitle: postdata.votetitle,
-        voteopt1: postdata.voteopt1,
-        voteopt2: postdata.voteopt2,
-        voteopt3: postdata.voteopt3,
-        voteopt4: postdata.voteopt4,
-        voteopt5: postdata.voteopt5,
-        voteopt6: postdata.voteopt6,
+        voteopt: postdata.voteopt,
         received: receiveStatus,
-        votetype: postdata.votetype
       })
       db.collection('Groups').doc(this.data.groupID).update({
         data:{
           vote:_.push({
             votetitle: postdata.votetitle,
-            voteopt1: postdata.voteopt1,
-            voteopt2: postdata.voteopt2,
-            voteopt3: postdata.voteopt3,
-            voteopt4: postdata.voteopt4,
-            voteopt5: postdata.voteopt5,
-            voteopt6: postdata.voteopt6,
-            received: receiveStatus,
-            votetype: postdata.votetype
+            voteopt: postdata.voteopt,
+            received: receiveStatus
           })
         },
        success: function (res) {
-        console.log(res)
+        
         wx.showToast({
           title: '发布成功',
           duration: 2000,
@@ -125,24 +101,8 @@ Page({
     })
   })
 },
-vote_submit: function(e) {
-  var formdata=e.detail.value;
-  this.setData({
-    votetitle:formdata.votetitle,
-    voteopt1:formdata.voteopt1,
-    voteopt2:formdata.voteopt2,
-    voteopt3:formdata.voteopt3,
-    voteopt4:formdata.voteopt4,
-    voteopt5:formdata.voteopt5,
-    voteopt6:formdata.voteopt6,
- }   
-  )
-  this.vote_creat()
-},
-
   onLoad: function(options) {
-    j=2
-    this.setData({
+      this.setData({
       groupID: JSON.parse(options.groupID),
       vote: JSON.parse(options.vote)
     })

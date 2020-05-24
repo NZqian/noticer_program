@@ -2,42 +2,18 @@
 const app = getApp();
 Page({
   data: {
-    voteType: 0,
     title: "",
     items: [],
     received: [],
     name: "",
     choice:"",
     vote:"",
-    thisGroup:"",
     namelist:"",
-  },
-  checkboxChange(e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-    const items = this.data.items
-    const values = e.detail.value
-    for (let i = 0, lenI = items.length; i < lenI; ++i) {
-      items[i].checked = false
-      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-        if (items[i].value === values[j]) {
-          items[i].checked = true
-          break
-        }
-      }
-    }
-    this.setData({
-      items
-    })
+    thisGroup:"",
   },
   radioChange(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
-    const items = this.data.items
-    for (let i = 0, len = items.length; i < len; ++i) {
-      items[i].checked = items[i].value === e.detail.value
-    }
-
+    console.log('radio::::::::', e.detail.value)
     this.setData({
-      items,
       choice:e.detail.value,
     })
   },
@@ -45,12 +21,13 @@ Page({
   formSubmit: function (e) {
     const db = wx.cloud.database()
     const _ = db.command
-
     let vote=this.data.vote
     let thisGroup = this.data.thisGroup
     let name = app.globalData.userdata['name']
-    for (var i = 0; i < vote.length; i++) {
-      if (vote[i]['votetitle'] == this.data.title) {
+    for (var i = 0; i < vote.length; i++) 
+    {
+      if (vote[i]['votetitle'] == this.data.title) 
+      {
         vote[i]['received'][name] = this.data.choice
         break
       }
@@ -81,25 +58,21 @@ Page({
     this.setData({
         received:received,
         name:name,
-        namelist: Object.keys(received),
-        votetype:avote['votetype'],
+        namelist: thisGroup.students,
         title: avote['votetitle'],
         thisGroup: thisGroup,
         vote:vote,
-        items:[
-          {value:avote.voteopt1,name:avote.voteopt1},
-          {value:avote.voteopt2,name:avote.voteopt2},
-          {value:avote.voteopt3,name:avote.voteopt3},
-          {value:avote.voteopt4,name:avote.voteopt4},
-          {value:avote.voteopt5,name:avote.voteopt5},
-          {value:avote.voteopt6,name:avote.voteopt6},
-        ]
+        avote:avote
     })
+
+    var changed = {}
+    var temp=this.data.avote['voteopt']
+    for (var i = 0; i < temp.length; i++)
+    {
+     changed['items[' + i+ '].value'] = changed['items[' + i + '].name']=this.data.avote['voteopt'][i];
+    }
+    this.setData(changed)
     console.log("test:::::::::::::::::",this.data.items)
-    //changed['title'] = v.title
-    //changed['voteType'] = v.single_select
-    // changed['items'] = vi
-   // that.setData(changed)
       },
       onShow: function(options) {}
     })
