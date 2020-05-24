@@ -32,19 +32,19 @@
         "pagePath": "pages/group/group",
         "text": "群组",
         "iconPath": "/images/icon_left.jpg",
-        "selectedIconPath": "images/icon_left.jpg"
+        "selectedIconPath": "images/icon_left_selected.jpg"
       },
       {
         "pagePath": "pages/home/home",
         "text": "主页",
         "iconPath": "/images/icon.jpg",
-        "selectedIconPath": "images/icon.jpg"
+        "selectedIconPath": "images/icon_selected.jpg"
       },
       {
         "pagePath": "pages/me/me",
         "text": "关于",
         "iconPath": "/images/icon_right.jpg",
-        "selectedIconPath": "images/icon_right.jpg"
+        "selectedIconPath": "images/icon_right_selected.jpg"
       }
     ]
   }
