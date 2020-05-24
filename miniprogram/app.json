@@ -47,5 +47,11 @@
         "selectedIconPath": "images/icon_right_selected.jpg"
       }
     ]
-  }
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json"
 }
