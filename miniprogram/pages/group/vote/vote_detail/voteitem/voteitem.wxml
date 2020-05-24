@@ -1,4 +1,4 @@
-<cu-custom bgImage="{{noticedetail_jpg}}" isBack="{{true}}">
+<cu-custom bgImage="{{voteitem_jpg}}" isBack="{{true}}">
   <view slot="backText">返回</view>
 </cu-custom>
 <form bindsubmit="formSubmit">

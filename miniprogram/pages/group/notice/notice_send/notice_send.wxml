@@ -27,7 +27,13 @@
 		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="contentInput" placeholder="通知正文内容"></textarea>
 	</view>
 </form>
-<button bindtap="chooseFile">{{fileName}}</button>
+<view class="page__bd">
+   <mp-cells>
+    <mp-cell>
+			<button bindtap="chooseFile">{{fileName}}</button>
+    </mp-cell>
+   </mp-cells>
+</view>
 <view class="padding flex flex-direction">
   <button class="cu-btn bg-green lg" bindtap="submit">发布</button>
 </view>

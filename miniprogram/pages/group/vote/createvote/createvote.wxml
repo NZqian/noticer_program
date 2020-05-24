@@ -1,6 +1,6 @@
 
 <!--createvote.wxml-->
-<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{true}}">
+<cu-custom bgImage="{{createvote_jpg}}" isBack="{{true}}">
 	<view slot="backText" style="color:black">返回</view>
 </cu-custom>
 

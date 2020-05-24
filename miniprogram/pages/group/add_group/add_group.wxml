@@ -1,5 +1,5 @@
 <!--miniprogram/pages/group/add_group/add_group.wxml-->
-<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{true}}">
+<cu-custom bgImage="{{add_group_jpg}}" isBack="{{true}}">
 	<view slot="backText">返回</view>
 </cu-custom>
 <form>
