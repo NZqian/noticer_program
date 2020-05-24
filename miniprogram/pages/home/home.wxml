@@ -1,6 +1,21 @@
 <scroll-view scroll-y class="scrollPage">
   <cu-custom bgImage="{{title_jpg}}">
   </cu-custom>
+
+<input type='text' placeholder='请输入内容' bindinput='getval' value='{{val}}'></input>
+
+<button bindtap='add'>添加</button>
+
+<view wx:for="{{list}}" wx:key="{{index}}">
+
+    <text>{{index+1}}---{{item}}</text>
+
+    <button size='mini' bindtap='del' data-index="{{index}}">删除</button>
+
+    <button bindtap='complete' size='mini' data-index="{{index}}">完成</button>
+
+</view>
+
   <view>{{time}}</view>
   <view>{{date}}</view>
   <view class="weather"> 
