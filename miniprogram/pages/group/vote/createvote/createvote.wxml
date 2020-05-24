@@ -7,10 +7,12 @@
 <input name="unionid" value="{{userInfo.unionId}}" hidden />
 <input name="openid" value="{{userInfo.openid}}" hidden />
 
-<view>
+<view data-weui-theme="{{theme}}">
   <view style="height: 15px"></view>
 </view>
-  
+<view class="weui-cells weui-cells_form" data-weui-theme="{{theme}}">
+	<view class="weui-cell ">
+		<view class="weui-cell__bd"> 
 <view>
   <view>标题：</view>
   <view>
@@ -55,5 +57,7 @@
 <view>
   <button bindtap="vote_submit" style="width:300px;height:40px;background:green;color:white">发布投票</button>
 </view>
-  
+		</view>
+	</view>
+</view>  
 

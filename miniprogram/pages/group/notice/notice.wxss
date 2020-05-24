@@ -1,4 +1,13 @@
-page {  
+/*!
+ * WeUI v2.3.0 (https://github.com/weui/weui-wxss)
+ * Copyright 2020 Tencent, Inc.
+ * Licensed under the MIT license
+ */
+ .button-sp-area{
+   padding-top:5px;
+   text-align:center
+  }
+ page {  
   background-color: #f2f2f2;  
   height: 100%;
 }  

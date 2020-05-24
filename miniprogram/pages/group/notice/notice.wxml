@@ -1,13 +1,11 @@
 <cu-custom bgImage="{{newnotice_jpg}}" isBack="{{true}}">
   <view slot="backText">返回</view>
 </cu-custom>
-     <view wx:if="{{userType === 1}}" class="padding flex flex-direction">
-        <button class="cu-btn bg-green lg" bindtap="gotoNoticeSend">添加通知</button>
+     <view wx:if="{{userType === 1}}" class="button-sp-area" data-weui-theme="{{theme}}">
+        <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoNoticeSend">添加通知</button>
+        <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoAddvote">新建投票</button>
      </view>
-     <view class="padding flex flex-direction" wx:if="{{userType === 1}}">
-        <button class="cu-btn bg-blue lg" bindtap="gotoAddvote">新建投票</button>
-     </view>
-<view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}" style="height:calc(100vh - {{CustomBar}}px - 50px)">
+<view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" data-weui-theme="{{theme}}">
   <view class="cu-item">
     <view class="cu-avatar round lg">!</view>
     <view class="content">
@@ -20,7 +18,7 @@
   </view>
 </view>
 
-<block wx:for="{{notices}}" wx:for-item="notice">
+<block wx:for="{{notices}}" wx:for-item="notice" data-weui-theme="{{theme}}">
   <view class="cu-list menu-avatar no-padding" bindtap="gotoNoticeDetail" data-received="{{notice.received}}" data-notice="{{notice}}">
     <view class="cu-item">
       <view class="cu-avatar round lg">!</view>
@@ -30,7 +28,7 @@
     </view>
   </view>
 </block>
-<block wx:for="{{vote}}" wx:for-item="avote">
+<block wx:for="{{vote}}" wx:for-item="avote" data-weui-theme="{{theme}}">
   <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{avote.received}}" data-avote="{{avote}}">
     <view class="cu-item">
       <view class="cu-avatar round lg">?</view>
