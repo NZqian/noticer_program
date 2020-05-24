@@ -2,21 +2,14 @@
   <cu-custom bgImage="{{title_jpg}}">
   </cu-custom>
 
-  <!-- 未读事件，设计了如下2种 -->
+  <!-- 未读事件 -->
 <view class="page">
     <view class="page__hd">
     <mp-cells>
      <mp-cell>
 			 <mp-icon type="field" icon="at" color="black" size="{{25}}"> </mp-icon>
         <mp-cells title="未读消息">
-<!--  1  -->
-   <!-- 可以设置 link url 跳转至具体的通知页 -->
-          <mp-cell link url="../group" value="课程名称" footer="说明文字">
-   <!-- icon指课程首字，参考group页面，显示在最左端，当前未显示 -->
-            <image slot="icon" src="{{group.name[0]}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
-         </mp-cell>
         </mp-cells>
-<!--  2  -->
 <!-- 可以设置 link url 跳转至具体的通知页 -->
     <mp-cell link url="../group">
        <view slot="title" style="position: relative;margin-right: 10px;">
@@ -30,20 +23,24 @@
    </mp-cells>
 </view>
 
-<!-- 标记事件 -->
-    <view class="page__hd">
+<!-- 标记事件 --> 
+<view class="page__hd">
     <mp-cells>
-    <mp-cell>
-      <mp-icon type="field" icon="tag" color="black" size="{{25}}"></mp-icon>
-      <mp-cells ext-class="my-cells" title="带说明的列表项">
-       <mp-cell value="标题文字" footer="说明文字"></mp-cell>
-        <mp-cell>
-         <view>标题文字（使用slot）</view>
-         <view slot="footer">说明文字</view>
-        </mp-cell>
-      </mp-cells>
-      </mp-cell>
+     <mp-cell>
+			 <mp-icon type="field" icon="tag" color="black" size="{{25}}"></mp-icon>
+        <mp-cells title="我的标记">
+        </mp-cells>
+<!-- 可以设置 link url 跳转至具体的通知页 -->
+    <mp-cell link url="../group">
+       <view slot="title" style="position: relative;margin-right: 10px;">
+        <view class="cu-avatar round lg">{{group.name[0]}}</view>
+        <mp-badge content="1" style="position: absolute;top: -.4em;right: -.4em;"/>
+      </view>
+      <view style="font-size: 13px;color: #888888;">课程名称</view>
+      <view style="font-size: 13px;color: #888888;">通知标题</view>
+     </mp-cell>
+    </mp-cell>
    </mp-cells>
-     </view>
+</view>
 </view>
 </scroll-view>
