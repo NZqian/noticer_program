@@ -11,7 +11,11 @@
   <view>
     <view style="height: 15px"></view>
   </view>
-  <view>标题：{{title}}</view>
+  <view class="weui-article__h1">投票主题：{{title}}</view>
+    <view>
+    <view style="height: 15px"></view>
+   </view>
+  <view class="weui-article__h2">选项：</view>
   <view>
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{items}}">
@@ -26,12 +30,17 @@
     <button class="weui-btn weui-btn_primary" form-type="submit">投票</button>
   </view>
 </form>
-		</view>
-	</view>
+
+    <view>
+    <view style="height: 15px"></view>
+    </view>
+  <view class="weui-article__h2">投票结果：</view>
+<view wx:if="{{userType ===  1}}">
+    <view class="weui-article__p" wx:for="{{namelist}}">{{item}} {{received[item]}} </view>
 </view>
 
-<view wx:if="{{userType ===  1}}">
-    <view class="text-grey" wx:for="{{namelist}}">{{item}} {{received[item]}} </view>
+		</view>
+	</view>
 </view>
 
 </view>

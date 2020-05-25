@@ -1,4 +1,3 @@
-
 <!--createvote.wxml-->
 <cu-custom bgImage="{{createvote_jpg}}" isBack="{{true}}">
 	<view slot="backText" style="color:black">返回</view>
@@ -9,30 +8,34 @@
 <input name="unionid" value="{{userInfo.unionId}}" hidden />
 <input name="openid" value="{{userInfo.openid}}" hidden />
 
-<view>
-  <view style="height: 15px"></view>
-</view>
 <view class="weui-cells weui-cells_form">
 	<view class="weui-cell ">
 		<view class="weui-cell__bd"> 
 <view>
-  <view>标题：</view>
+  <view class="weui-article__h1">标题：</view>
   <view>
     <input name="votetitle" bindinput="getTitle" maxlength="40" placeholder-style="font-size:15px" placeholder="请输入投票的主题" auto-focus/>
   </view>
 </view>  
-  
+
 <view>
   <view style="height: 15px"></view>
 </view>
 
+<view class="weui-article__h2">投票选项：</view>
+  
 <view wx:for="{{voteopt}}">
   {{index}}: {{item}}
 </view>
 
+<view>
+  <view style="height: 15px"></view>
+</view>
+
 <form bindsubmit='addOption'>
-  <view>新选项：</view>
+  <view class="weui-article__h2">新选项：</view>
   <input  name="inputopt" value="{{tempopt}}"type="text" maxlength="40" placeholder-style="font-size:15px" placeholder="请输入新选项的内容" auto-focus/> 
+  <view style="height: 15px"></view>
   <button form-type="submit" size="1" style="width:300px;height:40px;background:green;color:white" >添加选项</button>
 </form>
 
@@ -59,6 +62,10 @@
 <view>
   <button bindtap="vote_submit" style="width:300px;height:40px;background:green;color:white">发布投票</button>
 </view>
+    <view>
+    <view style="height: 15px"></view>
+    </view>
+    
 		</view>
 	</view>
 </view>  
