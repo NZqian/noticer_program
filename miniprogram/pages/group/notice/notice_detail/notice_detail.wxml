@@ -2,7 +2,9 @@
   <view slot="backText">返回</view>
 </cu-custom>
 
-<block wx:if="{{userType ===  1}}" data-weui-theme="{{theme}}">
+<view class="page" data-weui-theme="{{theme}}">
+
+<block wx:if="{{userType ===  1}}">
   <block wx:for="{{received}}" wx:for-item="member" wx:for-index='key'>
     <view class="cu-list menu-avatar no-padding">
       <view class="cu-item">
@@ -22,7 +24,7 @@
 </block>
 
 
-<view wx:if="{{userType ===  0}}" data-weui-theme="{{theme}}">
+<view wx:if="{{userType ===  0}}">
 
   <view class="cu-list menu-avatar no-padding">
     <view class="cu-item">
@@ -44,7 +46,7 @@
   </view>
 
   <!-- 内容 -->
-	<view class="weui-cells weui-cells_form" data-weui-theme="{{theme}}">
+	<view class="weui-cells weui-cells_form">
 		<view class="weui-cell ">
 			<view class="weui-cell__bd">
         <text class="text">
@@ -54,4 +56,6 @@
 		</view>
 	</view>
   <button class="weui-btn_cell weui-btn_cell-primary" bindtap="downLoadFile">下载附件{{fileName}}</button> 
+</view>
+
 </view>

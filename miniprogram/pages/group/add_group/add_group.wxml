@@ -2,7 +2,9 @@
 <cu-custom bgImage="{{add_group_jpg}}" isBack="{{true}}">
 	<view slot="backText">返回</view>
 </cu-custom>
-<form data-weui-theme="{{theme}}">
+<view class="page" data-weui-theme="{{theme}}">
+
+<form>
 	<view class="cu-form-group margin-top" >
 		<view class="title">课程序号</view>
 		<picker bindchange="groupChange" value="{{groupIndex}}" range="{{groups}}" range-key="{{'_id'}}">
@@ -12,6 +14,8 @@
 		</picker>
 	</view>
 </form>
-<view class="padding flex flex-direction" data-weui-theme="{{theme}}">
+<view class="padding flex flex-direction">
   <button class="weui-btn weui-btn_primary" bindtap="confirm">确定</button>
+</view>
+
 </view>

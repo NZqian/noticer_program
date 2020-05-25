@@ -4,13 +4,15 @@
 	<view slot="backText" style="color:black">返回</view>
 </cu-custom>
 
+<view class="page" data-weui-theme="{{theme}}">
+
 <input name="unionid" value="{{userInfo.unionId}}" hidden />
 <input name="openid" value="{{userInfo.openid}}" hidden />
 
-<view data-weui-theme="{{theme}}">
+<view>
   <view style="height: 15px"></view>
 </view>
-<view class="weui-cells weui-cells_form" data-weui-theme="{{theme}}">
+<view class="weui-cells weui-cells_form">
 	<view class="weui-cell ">
 		<view class="weui-cell__bd"> 
 <view>
@@ -61,3 +63,4 @@
 	</view>
 </view>  
 
+</view>
