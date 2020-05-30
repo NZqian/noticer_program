@@ -9,7 +9,6 @@ Page({
     time: ' ',
     date: ' ',
     weatherData: ' ',
-    val: ' ',
     list: [],
   },
 
