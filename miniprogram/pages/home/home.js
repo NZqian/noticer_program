@@ -57,10 +57,12 @@ Page({
     
   add(){
     var new_data = this.data.list;
-    new_data.push(this.data.val)
-    this.setData({list:new_data,val:''})
-    app.globalData.userdata['list'] = this.data.list
-    TODOList()
+    if(this.data.val != '' && this.data.val != ' '){
+      new_data.push(this.data.val)
+      this.setData({list:new_data,val:''})
+      app.globalData.userdata['list'] = this.data.list
+      TODOList()
+    }
   },
     
   del(e){
