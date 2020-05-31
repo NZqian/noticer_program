@@ -2,6 +2,8 @@
   <view slot="backText">返回</view>
 </cu-custom>
 
+<view class="page" data-weui-theme="{{theme}}">
+
 <block wx:if="{{userType ===  1}}">
   <block wx:for="{{received}}" wx:for-item="member" wx:for-index='key'>
     <view class="cu-list menu-avatar no-padding">
@@ -32,10 +34,10 @@
       <view wx:else>
         <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
       </view>
-      <view wx:if="{{thisReceived === 0}}" class="cu-btn" bindtap="confirm">确认收到</view>
-      <view wx:if="{{thisReceived === 1}}" class="cu-btn">已收到</view>
+      <view wx:if="{{thisReceived === 0}}" class="cu-btn" size='mini' style="background:gray;color:black" bindtap="confirm">确认</view>
+      <view wx:if="{{thisReceived === 1}}" class="cu-btn" size='mini' style="background:green;color:white">已收到</view>
       <view class="content">
-        <view class="text-grey">{{title}}</view>
+        <view class="text-grey" class="weui-article__h2">{{title}}</view>
         <view class="text-gray text-sm">
           截止时间：{{date}} {{time}}
         </view>
@@ -44,8 +46,14 @@
   </view>
 
   <!-- 内容 -->
-  <text class="text">
-  {{content}}
-   </text>
-<button bindtap="downLoadFile">下载附件{{fileName}}</button>  
+	<view class="weui-cells weui-cells_form">
+		<view class="weui-cell ">
+			<view class="weui-cell__bd">
+        {{content}}
+			</view>
+		</view>
+	</view>
+  <button class="weui-btn_cell weui-btn_cell-primary" bindtap="downLoadFile">下载附件{{fileName}}</button> 
+</view>
+
 </view>

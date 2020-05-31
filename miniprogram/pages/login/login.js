@@ -40,13 +40,7 @@ Page({
   login: function() {
     const db = wx.cloud.database()
     let that = this
-    console.log("here")
-    wx.requestSubscribeMessage({
-      tmplIds: ['3WIKWV4bJkNEPGhzgYZUaUIiBlKO4h0Z2BDY2TIV2e8'],
-      success(res) {
-        console.log(res)
-      }
-    })
+
     db.collection("Users").where({
       username: this.data.username
     }).get({

@@ -9,7 +9,9 @@ Page({
     time: ' ',
     date: ' ',
     weatherData: ' ',
+    val: ' ',
     list: [],
+    title_jpg:"/images/title.jpg"
   },
 
   onLoad: function(options){

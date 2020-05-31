@@ -68,8 +68,7 @@ Page({
         date: date,
         received: receiveStatus,
         fileID: fileID,
-        fileName: fileName
-      })
+        fileName: fileName})
       db.collection('Groups').doc(groupID).update({
         data: {
           notices: _.push({
@@ -82,18 +81,18 @@ Page({
             fileName: fileName
           })
         },
-        success: res => {
+        success: res=>{
           //console.log(res)
-          console.log("test::::::::::::::", notices)
+          console.log("test::::::::::::::",notices)
           wx.showToast({
             title: '发布成功',
             duration: 2000,
-            success: res => {
+            success: res=> {
               var util = require("../../../../utils/util.js")
               util.getGroups()
-              setTimeout(function() {
+              setTimeout(function () {
                 var pages = getCurrentPages();
-                var prevPage = pages[pages.length - 2]; //上一个页面
+                var prevPage = pages[pages.length - 2];  //上一个页面
                 prevPage.setData({
                   notices: notices
                 })
@@ -106,11 +105,11 @@ Page({
     })
   },
 
-  chooseFile: function() {
+  chooseFile: function(){
     let that = this
     wx.chooseMessageFile({
       count: 1,
-      success(res) {
+      success(res){
         that.setData({
           fileName: res.tempFiles[0].name,
           filePath: res.tempFiles[0].path
@@ -128,40 +127,6 @@ Page({
     console.log(this.data.date)
     console.log(this.data.content)
 
-    wx.request({
-      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx5d73ab6eac85b26d&secret=5d504194b4f553392d5e39d6b485b63a',
-      success: res => {
-        let token = res.data.access_token
-        console.log(token)
-        wx.request({
-          url: 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' + token,
-          method: "POST",
-          data: {
-            "touser": "oqfPs4kqE_Z6PRMy-P17BJ-ezRks",
-            "template_id": "3WIKWV4bJkNEPGhzgYZUaUIiBlKO4h0Z2BDY2TIV2e8",
-            "miniprogram_state": "developer",
-            "lang": "zh_CN",
-            "data": {
-              "thing1": {
-                "value": this.data.groupName
-              },
-              "date4": {
-                "value": this.data.date + ' ' + this.data.time
-              },
-              "thing6": {
-                "value": this.data.title
-              }
-            }
-          },
-          fail(res){
-            console.log(res)
-          },
-          success(res){
-            console.log(res)
-          }
-        })
-      }
-    })
     let that = this
     wx.cloud.uploadFile({
       cloudPath: that.data.fileName,
@@ -174,13 +139,12 @@ Page({
         console.log(that.data.fileID)
       }
     })
-
+    
   },
   onLoad: function(options) {
     console.log(options)
     this.setData({
       groupID: JSON.parse(options.groupID),
-      groupName: JSON.parse(options.groupName),
       notices: JSON.parse(options.notices)
     })
   },

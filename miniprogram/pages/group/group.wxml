@@ -1,16 +1,19 @@
-<cu-custom bgImage="/images/createnewnotice.jpg" isBack="{{false}}">
-	<view slot="backText">返回</view>
+<cu-custom bgImage="{{notice_jpg}}" isBack="{{false}}">
+  <mp-icon icon="add2" color="black" size="{{25}}">返回</mp-icon>
 </cu-custom>
+
+<view class="page" data-weui-theme="{{theme}}">
+
 <view class="cu-bar bg-white search fixed" style="top:{{CustomBar}}px;">
   <view class="action">
     <text class="cuIcon-title text-blue"></text>课程群及通知群
   </view>
   <view class="padding flex flex-wrap justify-between align-center bg-white" wx:if="{{userType === 1}}">
-    <button class="cu-btn bg-blue shadow" bindtap="gotoAddGroup">添加群组</button>
+    <mp-icon icon="add2" color="black" size="{{25}}" bindtap="gotoAddGroup"></mp-icon>
   </view>
 </view>
 
-<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true">
+<scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true" >
   <block wx:for="{{groups}}" wx:for-item="group">
     <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-vote="{{group.vote}}" data-group="{{group}}">
       <view class="cu-item">
@@ -26,3 +29,5 @@
     </view>
   </block>
 </scroll-view>
+
+</view>

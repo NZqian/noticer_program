@@ -1,11 +1,17 @@
-<cu-custom bgImage="{{noticedetail_jpg}}" isBack="{{true}}">
+<cu-custom bgImage="{{voteitem_jpg}}" isBack="{{true}}">
   <view slot="backText">返回</view>
 </cu-custom>
+
+<view class="page" data-weui-theme="{{theme}}">
+
+<view class="weui-cells weui-cells_form">
+	<view class="weui-cell ">
+		<view class="weui-cell__bd">
 <form bindsubmit="formSubmit">
   <view>
     <view style="height: 15px"></view>
   </view>
-  <view>标题：{{title}}</view>
+  <view class="weui-article__h1">{{title}}</view>
   <view>
     <radio-group bindchange="radioChange">
       <label class="weui-cell weui-check__label" wx:for="{{items}}">
@@ -17,11 +23,20 @@
     </radio-group>
   </view>
   <view>
-    <button form-type="submit">投票</button>
+    <button class="weui-btn weui-btn_primary" form-type="submit">投票</button>
   </view>
 </form>
 
-
+    <view>
+    <view style="height: 15px"></view>
+    </view>
+  <view class="weui-article__h2">投票结果：</view>
 <view wx:if="{{userType ===  1}}">
-    <view class="text-grey" wx:for="{{namelist}}">{{item}} {{received[item]}} </view>
+    <view class="weui-article__p" wx:for="{{namelist}}">{{item}} {{received[item]}} </view>
+</view>
+
+		</view>
+	</view>
+</view>
+
 </view>

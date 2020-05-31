@@ -52,7 +52,7 @@ Page({
   
   gotoNoticeSend: function(options) {
     wx.navigateTo({
-      url: '/pages/group/notice/notice_send/notice_send?groupID=' + JSON.stringify(this.data.thisGroup._id) + '&notices=' + JSON.stringify(this.data.notices) + '&groupName=' + JSON.stringify(this.data.thisGroup.name)
+      url: '/pages/group/notice/notice_send/notice_send?groupID=' + JSON.stringify(this.data.thisGroup._id) + '&notices=' + JSON.stringify(this.data.notices)
     })
   },
 })
