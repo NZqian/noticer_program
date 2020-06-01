@@ -1,4 +1,4 @@
-<cu-custom bgImage='{{me_jpt}}' isBack="{{false}}">
+<cu-custom bgImage='{{me_jpg}}' isBack="{{false}}">
   <view slot="backText">返回</view>
 </cu-custom>
 <!--index.wxml-->
@@ -15,8 +15,8 @@
       <!-- 上右 -->
       <view class="weui-cell__bd">
         <block wx:if="{{userType === 0}}">
-          <text style="font-size: 18px">{{name}}</text>
-          <text style="font-size: 15px; color: #888;">学号：{{number}}</text>
+          <text style="font-size: 18px">{{name}}\n</text>
+          <text style="font-size: 15px; color: #888;">学号：{{number}}\n</text>
           <text style="font-size: 15px; color: #888;">学院：{{academy}}</text>
         </block>
         <block wx:if="{{userType == 1}}">

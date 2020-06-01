@@ -1,24 +1,21 @@
+<cu-custom bgImage="{{title_jpg}}"></cu-custom>
 <scroll-view scroll-y class="scrollPage">
-  <cu-custom bgImage="{{title_jpg}}">
-  </cu-custom>
-
-<input type='text' placeholder='请输入内容' bindinput='getval' value='{{val}}'></input>
-
-<button bindtap='add'>添加</button>
-
-<view wx:for="{{list}}" wx:key="{{index}}">
-
+  <view style="color:white;-webkit-text-stroke: 0.5px darkgreen;font-weight:800;background:url({{weather_jpg}})">
+    <text>{{weatherData}}</text> 
+  </view>
+  <view >
+    <view style="height: 15px"></view>
+  </view>
+  <view wx:for="{{list}}" wx:key="{{index}}">
     <text>{{index+1}}---{{item}}</text>
+    <button size='mini' bindtap='del' style="background:red;color:white" data-index="{{index}}">删除</button>
+    <button bindtap='complete' size='mini' style="background:green;color:white" data-index="{{index}}">完成</button>
+  </view>
+  <text class="weui-article__h3">请输入新的待办事项</text>
+  <input type='text' placeholder='请输入内容' bindinput='getval' value='{{val}}'></input>
+  <view >
+    <view style="height: 15px"></view>
+  </view>
+  <button bindtap='add' style="width:300px;height:40px;background:green;color:white">添加</button>
 
-    <button size='mini' bindtap='del' data-index="{{index}}">删除</button>
-
-    <button bindtap='complete' size='mini' data-index="{{index}}">完成</button>
-
-</view>
-
-  <view>{{time}}</view>
-  <view>{{date}}</view>
-  <view class="weather"> 
-  <text>{{weatherData}}</text> 
-</view>
 </scroll-view>

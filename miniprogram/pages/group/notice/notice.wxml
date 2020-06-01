@@ -2,9 +2,15 @@
   <view slot="backText">返回</view>
 </cu-custom>
 
+<view class="page" data-weui-theme="{{theme}}">
+
+     <view wx:if="{{userType === 1}}" class="button-sp-area" >
+        <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoNoticeSend">添加通知</button>
+        <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoAddvote">新建投票</button>
+     </view>
 <view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}" style="height:calc(100vh - {{CustomBar}}px - 50px)">
   <view class="cu-item">
-    <view class="cu-avatar round lg">!</view>
+    <mp-icon icon="email"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
     <view class="content">
       <view class="text-black">欢迎加入{{thisGroup.name}}通知群
       </view>
@@ -18,7 +24,7 @@
 <block wx:for="{{notices}}" wx:for-item="notice">
   <view class="cu-list menu-avatar no-padding" bindtap="gotoNoticeDetail" data-received="{{notice.received}}" data-notice="{{notice}}">
     <view class="cu-item">
-      <view class="cu-avatar round lg">!</view>
+      <mp-icon icon="email"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
       <view class="content">
         <view class="text-black">{{notice.title}}</view>
       </view>
@@ -28,7 +34,7 @@
 <block wx:for="{{vote}}" wx:for-item="avote">
   <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{avote.received}}" data-avote="{{avote}}">
     <view class="cu-item">
-      <view class="cu-avatar round lg">?</view>
+     <mp-icon icon="comment"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
       <view class="content">
         <view class="text-black">{{avote.votetitle}}
         </view>
@@ -36,12 +42,5 @@
     </view>
   </view>
 </block>
-
-<view wx:if="{{userType === 1}}" class="padding flex flex-direction">
-  <button class="cu-btn bg-green lg" bindtap="gotoNoticeSend">添加通知</button>
-</view>
-
-  <view class="padding flex flex-direction" wx:if="{{userType === 1}}">
-    <button class="cu-btn bg-blue lg" bindtap="gotoAddvote">新建投票</button>
-  </view>
   
+</view>

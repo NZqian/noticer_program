@@ -1,4 +1,7 @@
 {
+  
+  "darkmode": true,
+  "themeLocation": "theme.json",
   "pages": [
     "pages/login/login",
     "pages/home/home",
@@ -12,44 +15,48 @@
     "pages/group/vote/vote_detail/voteitem/voteitem"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+
     "navigationBarTitleText": "ColorUI",
     "navigationStyle": "custom",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "backgroundColorTop": "@bgColorTop",
+    "backgroundColorBottom": "@bgColorBottom"
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#f10b2e",
+    "color": "#646464",
+    "selectedColor": "#000000",
+    "backgroundColor": "#e6e6e6",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/group/group",
         "text": "群组",
         "iconPath": "/images/icon_left.jpg",
-        "selectedIconPath": "images/icon_left.jpg"
+        "selectedIconPath": "images/icon_left_selected.jpg"
       },
       {
         "pagePath": "pages/home/home",
         "text": "主页",
         "iconPath": "/images/icon.jpg",
-        "selectedIconPath": "images/icon.jpg"
+        "selectedIconPath": "images/icon_selected.jpg"
       },
       {
         "pagePath": "pages/me/me",
         "text": "关于",
         "iconPath": "/images/icon_right.jpg",
-        "selectedIconPath": "images/icon_right.jpg"
+        "selectedIconPath": "images/icon_right_selected.jpg"
       }
     ]
   },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于显示天气数据"
-    }
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
   }
 }
-

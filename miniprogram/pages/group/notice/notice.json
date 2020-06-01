@@ -1,1 +1,3 @@
-{}
+{ "usingComponents": {
+  "mp-icon": "/components/icon/icon"
+}}
