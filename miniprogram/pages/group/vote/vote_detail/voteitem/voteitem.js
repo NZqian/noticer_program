@@ -35,7 +35,27 @@ Page({
     db.collection('Groups').doc(thisGroup['_id']).update({
       data: {
         vote:vote
-      }
+      },
+      success: function (res) {
+        
+        wx.showToast({
+          title: '投票成功',
+          duration: 2000,
+          success: res=> {
+            var util = require("../../../../utils/util.js")
+            util.getGroups()
+            setTimeout(function () {
+              var pages = getCurrentPages();
+              var prevPage = pages[pages.length - 2];  //上一个页面
+             console.log(vote)
+              prevPage.setData({
+                vote: vote
+              })
+              wx.navigateBack()
+            }, 2000);
+          }
+        });
+       }
     })
   },
 
@@ -72,6 +92,28 @@ Page({
      changed['items[' + i+ '].value'] = changed['items[' + i + '].name']=this.data.avote['voteopt'][i];
     }
     this.setData(changed)
+
+    var changed = {}
+    var temp=this.data.items
+    for (var i = 0; i < temp.length; i++)
+    {
+      var tempopt=temp[i].value
+      var tempcount=0
+      for (var j = 0; j < this.data.namelist.length; j++)
+      {
+          var tempname=this.data.namelist[j]
+          if(this.data.received[tempname]===tempopt)
+          {
+            tempcount++;
+          }
+      }
+      console.log(tempopt,tempcount)
+      changed['items[' + i+ '].percent'] =(tempcount/this.data.namelist.length*100).toFixed(2)
+
+    }
+    this.setData(changed)
+
+
     console.log("test:::::::::::::::::",this.data.items)
       },
       onShow: function(options) {}
