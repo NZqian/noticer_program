@@ -16,25 +16,32 @@ Page({
       },
       success: function (res) {
         console.log(res)
-        //wx.setStorageSync('isUserInfoStored', true)
-        //wx.setStorageSync('userdata', res.data)
-        app.globalData.groups = res['data']['groups']
-        app.globalData.userinfo = res['data']['userinfo']
-        console.log(res['data']['groups'])
-        console.log(app.globalData)
-        wx.switchTab({
-          url: '../home/home'
-        })
+        if(res['data'] == "error"){
+          wx.showModal({
+            title: '错误',  
+            content: '用户名或密码错误',      
+          })
+        } else{
+          //wx.setStorageSync('isUserInfoStored', true)
+          //wx.setStorageSync('userdata', res.data)
+          app.globalData.groups = res['data']['groups']
+          app.globalData.userinfo = res['data']['userinfo']
+          console.log(res['data']['groups'])
+          console.log(app.globalData)
+          wx.switchTab({
+            url: '../home/home'
+          }) 
+        }
       },
       fail: function (res) {
         console.log('submit fail');
       },
     })
-    wx.showToast({
+    /*wx.showToast({
       title: '登录中',
       icon: 'loading',
       duration: 13000
-    })
+    })*/
   },
   //  获取学号
   usernameInput: function (e) {

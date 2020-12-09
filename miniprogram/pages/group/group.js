@@ -44,9 +44,21 @@ Page({
   },
 
   gotoAddGroup: function (options) {
-    wx.navigateTo({
-      url: '/pages/group/add_group/add_group?'
+    wx.request({
+      url: "https://www.ningziqian.work:8000/get_all_group/",
+      method: "GET",
+      success: function (res) {
+        console.log(res)
+        app.globalData.allGroups = res['data']
+          wx.navigateTo({
+            url: '/pages/group/add_group/add_group?'
+          })
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
     })
+    
   },
 
   onLoad() {

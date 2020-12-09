@@ -8,37 +8,43 @@ Page({
 
   groupChange: function(e) {
     var groupIndex = e.detail.value
-    //console.log(classIndex)
+    console.log(groupIndex)
     this.setData({
       groupIndex: groupIndex,
-      groupID: this.data.groups[groupIndex]['_id']
+      groupID: this.data.groups[groupIndex]['groupID']
     })
   },
 
   confirm: function(e) {
-    const db = wx.cloud.database()
-    const _ = db.command
-    db.collection('Groups').doc(this.data.groupID).get().then(res => {
-      console.log(res.data)
-      if (res.data.admins.indexOf(app.globalData.userdata['name']) == -1) {//不在admins中
-        db.collection('Groups').doc(this.data.groupID).update({
+    console.log(e)
+    wx.request({
+      url: "https://www.ningziqian.work:8000/add_admin_into_group/",
+      method: "POST",
+      data: {
+        user_no: app.globalData.userinfo['username'],
+        group_no: this.data.groupID
+      },
+      // 服务器返回信息，将信息存储至本地缓存
+      success: function (res) {
+        app.globalData.notice_detail = res['data']
+        console.log(app.globalData.notice_detail)
+        wx.request({
+          url: "https://www.ningziqian.work:8000/query_user_group/",
+          method: "POST",
           data: {
-            admins: _.push(app.globalData.userdata['name'])
-          }, success: res => {
-            wx.showToast({
-              title: '加入成功',
-              duration: 2000,
-              success: function () {
-                var util = require("../../../utils/util.js")
-                util.getGroups()
-                setTimeout(function () {
-                  wx.navigateBack()
-                }, 2000);
-              }
-            });
+            user_no: app.globalData.userinfo['username']
+          },
+          success: function (res) {
+            app.globalData.groups = res['data']
+            wx.navigateBack({
+              complete: (res) => {},
+            })
           }
         })
-      }
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
     })
   },
 

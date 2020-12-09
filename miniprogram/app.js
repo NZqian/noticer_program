@@ -7,6 +7,7 @@ App({
       userinfo : null,
       notices : null,
       notice_detail : null,
+      allGroups: null
     }
 
     // 登录
