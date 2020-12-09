@@ -15,14 +15,14 @@
 
 <scroll-view scroll-y class="indexes" scroll-into-view="indexes-{{listCurID}}" style="height:calc(100vh - {{CustomBar}}px - 50px)" scroll-with-animation="true" enable-back-to-top="true" >
   <block wx:for="{{groups}}" wx:for-item="group">
-    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-notices="{{group.notices}}" data-vote="{{group.vote}}" data-group="{{group}}">
+    <view class="cu-list menu-avatar no-padding" bindtap="gotoNotice" data-groupID="{{group.groupID}}" data-groupName="{{group.groupName}}">
       <view class="cu-item">
-        <view class="cu-avatar round lg">{{group.name[0]}}</view>
+        <view class="cu-avatar round lg">{{group.groupName[0]}}</view>
         <view class="content">
-          <view class="text-grey">{{group.name}}
+          <view class="text-grey">{{group.groupName}}
           </view>
           <view class="text-gray text-sm">
-            {{group._id}}
+            {{group.groupID}}
           </view>
         </view>
       </view>

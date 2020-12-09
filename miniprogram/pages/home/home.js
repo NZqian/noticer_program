@@ -1,6 +1,4 @@
 const app = getApp();
-const db = wx.cloud.database()
-const _ = db.command
 import {
   formatTime,
   formatDate,
@@ -25,14 +23,6 @@ Page({
     wx.requestSubscribeMessage({
       tmplIds: ['aZzTkMDanrNDI4XyLGmg2I0-rMme4-IhyH0ws8zNYw8'],
       success(res) {}
-    })
-    var util = require("../../utils/util.js")
-    util.getGroups()
-    util.getAllGroups()
-    wx.showToast({
-      title: '载入中',
-      icon: 'loading',
-      duration: 1500
     })
     var TIME = formatTime(new Date());
     var DATE = formatDate(new Date());
@@ -62,16 +52,6 @@ Page({
       success: success
     });
 
-    db.collection("Users").where({
-      _id: app.globalData.userdata['_id']
-    }).get().then(res => {
-      console.log(res)
-      if (res.data[0].TODOList != undefined) {
-        this.setData({
-          list: res.data[0].TODOList
-        })
-      }
-    })
   },
 
 

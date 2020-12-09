@@ -15,7 +15,8 @@ Page({
   },
 
   onLoad: function() {
-    if (app.globalData.userdata['type'] === "admin") {
+    console.log(app.globalData.userinfo)
+    if (app.globalData.userinfo['type'] === "admin") {
       this.setData({
         userType: 1,
       })
@@ -25,10 +26,11 @@ Page({
       })
     }
     this.setData({
-      number: app.globalData.userdata['username'],
-      academy: app.globalData.userdata['academy'],
-      name: app.globalData.userdata['name']
+      number: app.globalData.userinfo['username'],
+      academy: app.globalData.userinfo['academy'],
+      name: app.globalData.userinfo['name']
     })
+    console.log(this.data.name)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -75,7 +77,7 @@ Page({
   thank: function() {
     wx.showModal({
       title: '致谢与说明',
-      content: '感谢您使用讯必达，本程序由瓜大学生自主开发，与瓜大官方无任何联系，我们会保证各位同学翱翔门户信息的安全，请放心使用',
+      content: '感谢您使用讯必达，本程序由2018300410-宁子谦自主开发，作为数据库大作业',
       showCancel: false,
       confirmText: '我知道了'
     })
@@ -87,7 +89,7 @@ Page({
   // 赞赏支持
   like: function() {
     wx.previewImage({
-      urls: ['http://m.qpic.cn/psc?/V131eGJV0Rbc0U/oAv0ZhR90Wmp6IConimKSNkIC4127ILRri2jb57gVAA5Q65z9axK5PFl8hb0j54ZzKTqHKt.hWGD9VVkn*RJHAIO*rGxAEojgNNA5htc.Bg!/b&bo=egJ8AnoCfAIDGTw!&rf=viewer_4&t=5'],
+      urls: ['https://i.loli.net/2020/12/09/fAwqMJlDoHF9y7j.jpg'],
     })
   },
   // 分享

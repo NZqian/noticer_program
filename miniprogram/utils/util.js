@@ -27,61 +27,9 @@ module.exports = {
   formatTime: formatTime
 }
 
-function getGroups() {
-  wx.cloud.callFunction({
-    name: 'getGroups',
-    data: {
-      type: app.globalData.userdata['type'],
-      name: app.globalData.userdata['name']
-    },
-    complete: res=>{
-      console.log(res)
-      app.globalData.groups = res.result.data
-    }
-  })
-}
 
-function TODOList() {
-  wx.cloud.callFunction({
-    name: 'TODOList',
-    data: {
-      _id: app.globalData.userdata['_id'],
-      list: app.globalData.userdata['list'],
-    },
-    success: res=>{
-      console.log(res)
-    },
-    fail: console.error
-  })
-}
-
-function getAllGroups() {
-  wx.cloud.callFunction({
-    name: 'getAllGroups',
-    complete: res => {
-      console.log(res)
-      app.globalData.allGroups = res.result.data
-    }
-  })
-}
-
-function addAdminIntoDB(_id, name){
-  console.log(_id)
-  console.log(name)
-  wx.cloud.callFunction({
-    name: 'addAdminIntoDB',
-    data: {
-      _id: _id,
-      name: name
-    }
-  })
-}
 
 module.exports = {
-  getGroups: getGroups,
-  getAllGroups: getAllGroups,
-  addAdminIntoDB: addAdminIntoDB,
-  TODOList: TODOList,
   formatTime: formatTime,
   formatDate: formatDate
 }

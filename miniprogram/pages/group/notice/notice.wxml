@@ -12,7 +12,7 @@
   <view class="cu-item">
     <mp-icon icon="email"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
     <view class="content">
-      <view class="text-black">欢迎加入{{thisGroup.name}}通知群
+      <view class="text-black">欢迎加入{{groupName}}通知群
       </view>
       <view class="text-gray text-sm">
         请注意关注群内通知
@@ -22,25 +22,15 @@
 </view>
 
 <block wx:for="{{notices}}" wx:for-item="notice">
-  <view class="cu-list menu-avatar no-padding" bindtap="gotoNoticeDetail" data-received="{{notice.received}}" data-notice="{{notice}}">
+  <view class="cu-list menu-avatar no-padding" bindtap="gotoNoticeDetail" data-noticeid="{{notice.noticeID}}">
     <view class="cu-item">
       <mp-icon icon="email"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
       <view class="content">
-        <view class="text-black">{{notice.title}}</view>
+        <view class="text-black">{{notice.noticeTitle}}</view>
       </view>
     </view>
   </view>
 </block>
-<block wx:for="{{vote}}" wx:for-item="avote">
-  <view class="cu-list menu-avatar no-padding" bindtap="gotovoteDetail" data-received="{{avote.received}}" data-avote="{{avote}}">
-    <view class="cu-item">
-     <mp-icon icon="comment"  color="white" class="cu-avatar round lg" size="{{30}}"></mp-icon>
-      <view class="content">
-        <view class="text-black">{{avote.votetitle}}
-        </view>
-      </view>
-    </view>
-  </view>
-</block>
+
   
 </view>

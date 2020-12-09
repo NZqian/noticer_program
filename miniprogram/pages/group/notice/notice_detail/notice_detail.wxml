@@ -28,14 +28,14 @@
 
   <view class="cu-list menu-avatar no-padding">
     <view class="cu-item">
-      <view wx:if="{{thisReceived === 0}}">
+      <view wx:if="{{received === 0}}">
         <view class="cu-avatar round lg" style="position:fixed;left:10rpx;top:20rpx">×</view>
       </view>
       <view wx:else>
         <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
       </view>
-      <view wx:if="{{thisReceived === 0}}" class="cu-btn" size='mini' style="background:gray;color:black" bindtap="confirm">确认</view>
-      <view wx:if="{{thisReceived === 1}}" class="cu-btn" size='mini' style="background:green;color:white">已收到</view>
+      <view wx:if="{{received === 0}}" class="cu-btn" size='mini' style="background:gray;color:black" bindtap="confirm">确认</view>
+      <view wx:if="{{received === 1}}" class="cu-btn" size='mini' style="background:green;color:white">已收到</view>
       <view class="content">
         <view class="text-grey" class="weui-article__h2">{{title}}</view>
         <view class="text-gray text-sm">
@@ -53,7 +53,6 @@
 			</view>
 		</view>
 	</view>
-  <button class="weui-btn_cell weui-btn_cell-primary" bindtap="downLoadFile">下载附件{{fileName}}</button> 
 </view>
 
 </view>

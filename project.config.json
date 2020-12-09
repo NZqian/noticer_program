@@ -10,9 +10,10 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": true,
+		"scopeDataCheck": false,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -22,33 +23,38 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"bundle": false,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"compileHotReLoad": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"useIsolateContext": true,
+		"userConfirmedBundleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true
 	},
 	"appid": "wx5d73ab6eac85b26d",
-	"projectname": "noticer",
+	"projectname": "noticer_program",
 	"libVersion": "2.8.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
-			"current": -1,
 			"list": []
 		},
 		"conversation": {
-			"current": -1,
 			"list": []
 		},
 		"plugin": {
-			"current": -1,
 			"list": []
 		},
 		"game": {
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
 			"list": [
 				{
 					"id": -1,
