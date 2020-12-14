@@ -50,7 +50,8 @@ Page({
     })
   },
   //将通知内容写入数据库
-  addNoticeintoDB: function(title, content, time, date, groupID, fileID, fileName) {
+  addNoticeintoDB: function(title, content, time, date, groupID) {
+
   },
 
   submit: function() {
@@ -59,61 +60,48 @@ Page({
     console.log(this.data.time)
     console.log(this.data.date)
     console.log(this.data.content)
-
+    let that = this
     wx.request({
-      url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx5d73ab6eac85b26d&secret=5d504194b4f553392d5e39d6b485b63a',
-      success: res => {
-        let token = res.data.access_token
-        console.log(token)
+      url: "https://www.ningziqian.work:8000/insert_notice/",
+      method: "POST",
+      data: {
+        notice_title: this.data.title,
+        notice_content: this.data.content,
+        notice_date: this.data.date,
+        notice_time: this.data.time,
+        notice_groupID: this.data.groupID
+      },
+      // 服务器返回信息，将信息存储至本地缓存
+      success: function (res) {
         wx.request({
-          url: 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send?access_token=' + token,
+          url: "https://www.ningziqian.work:8000/noticeinfo/",
           method: "POST",
           data: {
-            "touser": "oqfPs4kqE_Z6PRMy-P17BJ-ezRks",
-            "template_id": "3WIKWV4bJkNEPGhzgYZUaUIiBlKO4h0Z2BDY2TIV2e8",
-            "miniprogram_state": "developer",
-            "lang": "zh_CN",
-            "data": {
-              "thing1": {
-                "value": this.data.groupName
-              },
-              "date4": {
-                "value": this.data.date + ' ' + this.data.time
-              },
-              "thing6": {
-                "value": this.data.title
-              }
-            }
+            groupID: that.data.groupID
           },
-          fail(res){
+          // 服务器返回信息，将信息存储至本地缓存
+          success: function (res) {
+            app.globalData.notices = res['data']
             console.log(res)
+            wx.navigateBack({
+              complete: (res) => {},
+            })
           },
-          success(res){
-            console.log(res)
-          }
+          fail: function (res) {
+            console.log('submit fail');
+          },
         })
-      }
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      },
     })
-    let that = this
-    wx.cloud.uploadFile({
-      cloudPath: that.data.fileName,
-      filePath: that.data.filePath,
-      success: res => {
-        that.setData({
-          fileID: res.fileID
-        })
-        that.addNoticeintoDB(that.data.title, that.data.content, that.data.time, that.data.date, that.data.groupID, that.data.fileID, that.data.fileName)
-        console.log(that.data.fileID)
-      }
-    })
-
   },
   onLoad: function(options) {
     console.log(options)
     this.setData({
       groupID: JSON.parse(options.groupID),
       groupName: JSON.parse(options.groupName),
-      notices: JSON.parse(options.notices)
     })
   },
 })

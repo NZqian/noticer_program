@@ -6,7 +6,6 @@
 
      <view wx:if="{{userType === 1}}" class="button-sp-area" >
         <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoNoticeSend">添加通知</button>
-        <button class="weui-btn weui-btn_mini weui-btn_default" bindtap="gotoAddvote">新建投票</button>
      </view>
 <view class="cu-list menu-avatar no-padding" data-received="{{notice.received}}" data-notice="{{notice}}" style="height:calc(100vh - {{CustomBar}}px - 50px)">
   <view class="cu-item">

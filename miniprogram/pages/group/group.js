@@ -25,7 +25,7 @@ Page({
         app.globalData.notices = res['data']
         console.log(res)
         wx.navigateTo({
-          url: '/pages/group/notice/notice?groupname=' + JSON.stringify(options.currentTarget.dataset.groupname)
+          url: '/pages/group/notice/notice?groupName=' + JSON.stringify(options.currentTarget.dataset.groupname) + "&groupID=" + JSON.stringify(options.currentTarget.dataset.groupid)
         })
       },
       fail: function (res) {

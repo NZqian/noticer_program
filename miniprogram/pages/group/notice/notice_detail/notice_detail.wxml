@@ -5,17 +5,17 @@
 <view class="page" data-weui-theme="{{theme}}">
 
 <block wx:if="{{userType ===  1}}">
-  <block wx:for="{{received}}" wx:for-item="member" wx:for-index='key'>
+  <block wx:for="{{status}}" wx:for-item="member" wx:for-index='key'>
     <view class="cu-list menu-avatar no-padding">
       <view class="cu-item">
-        <view wx:if="{{member===0}}">
+        <view wx:if="{{member.received===0}}">
           <view class="cu-avatar round lg" style="position:fixed;left:10rpx;top:20rpx">×</view>
         </view>
         <view wx:else>
           <view class="cu-avatar1 round lg" style="position:fixed;left:10rpx;top:20rpx">✓</view>
         </view>
         <view class="content">
-          <view class="text-grey">{{key}}
+          <view class="text-grey">{{member.name}}
           </view>
         </view>
       </view>

@@ -29,7 +29,7 @@ Page({
           console.log(res['data']['groups'])
           console.log(app.globalData)
           wx.switchTab({
-            url: '../home/home'
+            url: '../group/group'
           }) 
         }
       },
@@ -60,7 +60,7 @@ Page({
     if (wx.getStorageSync('isUserInfoStored')) {
       app.globalData.userdata = wx.getStorageSync('userdata')
       wx.switchTab({
-        url: '../home/home'
+        url: '../group/group'
       })
     }
   },

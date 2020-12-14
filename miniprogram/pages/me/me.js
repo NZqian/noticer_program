@@ -4,7 +4,7 @@ var app = getApp()
 
 Page({
   data: {
-    motto: 'Copyright@不愿意透露姓名的小组',
+    motto: 'Copyright@宁子谦2018300410',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),

@@ -14,23 +14,23 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log(app.globalData.notice_detail)
     if (app.globalData.userinfo['type'] === "admin") {
       this.setData({
         userType: 1,
+        status: app.globalData.notice_detail
       })
     } else {
       this.setData({
         userType: 0,
+        received:app.globalData.notice_detail['received'],
+        date: app.globalData.notice_detail['date'],
+        time: app.globalData.notice_detail['time'],
+        title: app.globalData.notice_detail['title'],
+        content: app.globalData.notice_detail['content']
       })
     }
-    console.log(app.globalData.notice_detail)
-    this.setData({
-      received:app.globalData.notice_detail['received'],
-      date: app.globalData.notice_detail['date'],
-      time: app.globalData.notice_detail['time'],
-      title: app.globalData.notice_detail['title'],
-      content: app.globalData.notice_detail['content']
-    })
+    console.log(this.data.received)
   },
   onShow: function(options) {
 

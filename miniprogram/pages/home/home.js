@@ -81,6 +81,7 @@ Page({
     this.setData({
       list: del_data
     })
+
     app.globalData.userdata['list'] = this.data.list
     TODOList()
   },
